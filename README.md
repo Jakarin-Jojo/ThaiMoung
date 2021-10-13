@@ -8,8 +8,14 @@ ThaiMoung is a web forum application that provides services to create forums for
 [Vision Statement](../../wiki/Vision%20Statement)  
 [Requirements](../../wiki/Requirements)   
 
-## Iteration plan
-* [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)
+## Iteration
+
+### Iteration Plans  
+* [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)  
+
+### Iteration TaskBoards  
+* [Iteration 1 TaskBoard](../../projects/2)  
+
 
 ## License
 [MIT License](https://github.com/Jakarin-Jojo/ThaiMoung/blob/master/LICENSE)
