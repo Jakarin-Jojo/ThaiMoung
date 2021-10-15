@@ -1,4 +1,6 @@
 # ThaiMoung ![ThaiMoungLOGO](Logo/LOGO-thaimoung_2.png)
+[![Build Status](https://app.travis-ci.com/Jakarin-Jojo/ThaiMoung.svg?branch=master)](https://app.travis-ci.com/Jakarin-Jojo/ThaiMoung)
+[![codecov](https://codecov.io/gh/Jakarin-Jojo/ThaiMoung/branch/master/graph/badge.svg?token=TVQ33DAQ9M)](https://codecov.io/gh/Jakarin-Jojo/ThaiMoung)  
 ThaiMoung is a web forum application that provides services to create forums for dramas in Thailand.
 
 ## Project Documents
