@@ -10,7 +10,8 @@ script:
 
 deploy:
   provider: heroku
-  api_key: <api_deploy_key>
+  api-key:
+    secure: $HEROKU_API_KEY
   app: thaimoung
 
 after_success:
