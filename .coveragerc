@@ -1,0 +1,10 @@
+[run]
+
+branch = True
+
+cover_pylib = False
+
+omit =
+    forums/tests.py
+    forums/migrations/*
+    manage.py
