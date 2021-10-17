@@ -8,11 +8,10 @@ install:
 script:
   - coverage run manage.py test
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
 deploy:
   provider: heroku
-  api_key:
-    secure: bb365396-d070-4a56-8826-ae910fadb2b6
+  api_key: <api_deploy_key>
   app: thaimoung
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
