@@ -14,5 +14,5 @@ after_success:
 deploy:
   provider: heroku
   api_key:
-    secure: <api_deploy_key>
+    secure: bb365396-d070-4a56-8826-ae910fadb2b6
   app: thaimoung
