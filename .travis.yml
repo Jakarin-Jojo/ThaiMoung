@@ -1,15 +1,12 @@
 language: python
+
 python: '3.9'
+
 install:
-- pip install -r requirements.txt
+  - pip install -r requirements.txt
+
 script:
-- coverage run manage.py test
-deploy:
-  provider: heroku
-  api-key:
-    secure: "$HEROKU_API_KEY"
-  app: thaimoung
-  api_key:
-    secure: TWmZlmdn+rYsKU2I4y9zWnPnvjXhQWrS1+0BSx7xDtrOOH7NwiWKXDtO7+cWfLY9ihf54JeXoFILr7VffK6k2PiYB4I5ot5AlGOyJ/kh2P3rRx58J8c+abaAp/jfA2ELpjzZ1v5RiAMk1DtKl8vB09c6FxnelPCLhnOqR8ObTC5v4uivUnmXX62e5mXSa8YTDCZuFmeXhDQWNS/V8gJR3IY7WPS8Dtu58ptXO1hju7osDbRyePa/B07LnFcBWj19v4MYm+kRayXNdD2Fd2F/zS2vYckrxp+23NA2lQ/99fARmalXLBfQZbZQiv7lMEUCCabpoRzfRVhCkOhhrNDbjzKpvaSsmlBS2DJjj6Okk1b1L5EqUzA9pHH8CQQ/7+fRK1iNQIG/MCoUeHvdkdSzeOdE7fX03tLacCPIif3m1LAr1A/LTx3jbf4PBhu5VSMauQb3G19sBm730rbSbUaeQX7HBi6N/gsB1slEqjtkQVp3X/f78Yx2/MlEY1ousjuy5DUt76CZlVu/ANUx3AgN326KUTd3QlctzrXZh9hmf7K6Kq1gNoaW0ADYUAAdaSShvDykYLJc1yiAVrx6fioW+HRoPbwr6JdPJJOjaK4Sh5U5eHeLDCfZ2ql+lIoyiZkYz0cPuEqcdNBz1Q9UvASrIu3swium5SIuKoLX8MVBcxs=
+  - coverage run manage.py test
+    
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
