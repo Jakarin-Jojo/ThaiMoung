@@ -28,13 +28,13 @@ SECRET_KEY = env('SECRET_KEY', default='dumb-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['https://thaimoung.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'forums.apps.ForumsConfig',
+    'forums',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
