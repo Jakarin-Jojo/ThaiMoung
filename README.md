@@ -14,9 +14,11 @@ ThaiMoung is a web forum application that provides services to create forums for
 
 ### Iteration Plans  
 * [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)  
+* [Iteration 2 Plan](../../wiki/Iteration%202%20Plan)  
 
 ### Iteration TaskBoards  
 * [Iteration 1 TaskBoard](../../projects/2)  
+* [Iteration 2 TaskBoard](../../projects/3)  
 
 
 ## License
