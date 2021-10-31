@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link href=" forums/static/forums/sign_in_and_sign_up.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-  </head>
-  <body>
+{% extends 'forums/base.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'forums/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
   <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
@@ -53,6 +47,5 @@
 		</div>
 	</div>
 </div>
-    <script src=" forums/static/forums/sign_in_and_sign_up.js"></script>
-  </body>
-</html>
+    <script src="{%static 'forums/sign_in_and_sign_up.js'%}"></script>
+{% endblock %}
