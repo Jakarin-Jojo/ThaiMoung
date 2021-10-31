@@ -1,0 +1,56 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #161b28;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-family: "Nunito", serif;
+	height: 95vh;
+}
+
+h2 {
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.btn {
+	font-size: 17px;
+	font-weight: bold;
+	border-width: 2px;
+}
+
+label {
+	text-align: left;
+	color: #FFFFFF;
+	font-size: 25px;
+}
+
+select.form-select {
+	border-radius: 10px;
+}
+
+form {
+	background-color: #2e3239;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+	margin-top: 45px;
+	border-radius: 50px;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 200px;
+	width: 100%;
+	border-radius: 10px;
+}
