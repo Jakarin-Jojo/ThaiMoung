@@ -4,5 +4,23 @@
 {% block content %}
 <h3> Create new forum </h3><br><br>
 
+<form method="post">
+    {% csrf_token %}
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title"><br><br>
+  <label for="description">Description:</label><br><br>
+  <input type="text" id="description" name="description"><br><br>
+  <label for="category">Category :</label><br><br>
+    <select  name="category" id="category">
+        <option value="select the choice">--- Select the choice ---</option>
+        <option value="news">News</option>
+        <option value="sports">Sports</option>
+        <option value="fashion">Fashion</option>
+        <option value="technology">Technology</option>
+    </select><br><br>
+
+  <a role="button" class="btn btn-success me-3" href="{% url 'main' %}">Post</a>
+    <a class="btn btn-outline-danger me-3" href="{% url 'main' %}">Back</a>
+</form>
 
 {% endblock %}
