@@ -8,3 +8,4 @@ omit =
     forums/tests.py
     forums/migrations/*
     manage.py
+    staticfiles/*
