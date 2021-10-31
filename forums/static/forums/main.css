@@ -1,56 +1,25 @@
 body{
-  margin: 0;
-  padding: 0;
   background-color: #171B29;
   font-family: "Nunito", serif;
-}
-
-header{
-  z-index: 1;
-  position: fixed;
-  background: #22242A;
-  padding: 20px;
-  width: calc(100% - 0%);
-  top: 0;
-  height: 30px;
 }
 
 .left_area h3{
   color: #fff;
   margin: 0;
   text-transform: uppercase;
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 30px;
+  font-weight: 1000;
 }
 
 .left_area span{
   color: #FB0A52;
 }
 
-.logout_btn{
-  padding: 5px;
-  background: #19B3D3;
-  text-decoration: none;
-  float: right;
-  margin-top: -30px;
-  margin-right: 40px;
-  border-radius: 2px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  transition: 0.5s;
-  transition-property: background;
-}
-
-.logout_btn:hover{
-  background: #FB084C;
-}
-
 .sidebar{
   z-index: 1;
   top: 0;
   background: #2f323a;
-  margin-top: 70px;
+  margin-top: 54px;
   padding-top: 30px;
   position: fixed;
   left: 0;
@@ -106,9 +75,9 @@ label #sidebar_btn{
   color: #fff;
   position: fixed;
   cursor: pointer;
-  left: 300px;
-  font-size: 20px;
-  margin: 5px 0;
+  left: 250px;
+  font-size: 30px;
+  margin: -15px;
   transition: 0.5s;
   transition-property: color;
 }
@@ -195,7 +164,7 @@ label #sidebar_btn:hover{
   .nav_bar{
     background: #222;
     width: calc(100% - 0px);
-    margin-top: 70px;
+    margin-top: 54px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -282,11 +251,12 @@ label #sidebar_btn:hover{
   }*/
 }
 
-.nav-link .fas {
+.nav .fas {
+  color: white;
     transition: all 1s
 }
 
-.nav-link:hover .fas {
+.nav:hover .fas {
     transform: rotate(360deg)
 }
 

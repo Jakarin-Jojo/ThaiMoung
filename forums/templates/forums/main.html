@@ -1,23 +1,32 @@
 {% extends 'forums/base.html' %}
 {% load static %}
-{% block css %}
 <!-- CSS only -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="{% static 'forums/main.css' %}">
+{% block css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static 'forums/main.css' %}">
 {% endblock %}
 {% block content %}
     <input type="checkbox" id="check">
     <!--header area start-->
     <header>
-      <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-      </label>
-      <div class="left_area">
-        <h3>Thai<span>Moung</span></h3>
-      </div>
-      <div class="right_area">
-        <a href="#" class="logout_btn">Logout</a>
-      </div>
+    <nav class="navbar fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand"><div class="left_area"><h3>Thai<span>Moung</span></h3></div></a>
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div >
+                <button type="button" class="btn btn-outline-danger "><i class="fas fa-plus-circle"></i> New</button>
+                <button type="button" class="btn btn-primary me-3">Sign up/Sign in</button>
+            </div>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
     </header>
     <!--header area end-->
     <!--mobile navigation bar start-->
@@ -40,14 +49,20 @@
     <div class="sidebar">
       <div class="profile_info">
         <img src="{% static 'forums/user-icon.png' %}" class="profile_image" alt="">
-        <h4>Guess</h4>
+        <h4>Guest</h4>
+          <div class="container">
+            <div class="row" style=" color: gainsboro;">
+                <div class="col" style="font-size: 20px"><a href="#"><i class="fas fa-user-plus"></i></a></div>
+                <div class="col" style="font-size: 20px"><a href="#"><i class="fas fa-cog"></i></a></div>
+            </div>
+          </div>
       </div>
-      <a class="nav-link" href="#" ><i class="fas fa-desktop"></i><span>News</span></a>
-      <a class="nav-link" href="#"><i class="fas fa-running"></i><span>Sports</span></a>
-      <a class="nav-link" href="#"><i class="fas fa-gamepad"></i><span>Games</span></a>
-      <a class="nav-link" href="#"><i class="fas fa-tshirt"></i><span>Fashion</span></a>
-      <a class="nav-link" href="#"><i class="fas fa-microchip"></i><span>Technology</span></a>
-      <a class="nav-link" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+      <a class="nav text-decoration-none" href="#" ><i class="fas fa-desktop"></i><span>News</span></a>
+      <a class="nav text-decoration-none" href="#"><i class="fas fa-running"></i><span>Sports</span></a>
+      <a class="nav text-decoration-none" href="#"><i class="fas fa-gamepad"></i><span>Games</span></a>
+      <a class="nav text-decoration-none" href="#"><i class="fas fa-tshirt"></i><span>Fashion</span></a>
+      <a class="nav text-decoration-none" href="#"><i class="fas fa-microchip"></i><span>Technology</span></a>
+      <a class="nav text-decoration-none" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
     </div>
     <!--sidebar end-->
 
