@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('forums/', include('forums.urls')),
     path('', lambda request: redirect('forums/')),
-    path('sign_in_and_sign_up/', views.sign_in_and_sign_up, name="sign_in_and_sign_up"),
+    path('accounts/', include('accounts.urls')),
 ]

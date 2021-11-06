@@ -9,10 +9,6 @@ def main(request):
     return render(request, 'forums/main.html')
 
 
-def sign_in_and_sign_up(request):
-    return render(request, 'forums/sign_in_and_sign_up.html')
-
-
 class CreateForumView(CreateView):
     model = Post
     template_name = 'forums/create_forum.html'
