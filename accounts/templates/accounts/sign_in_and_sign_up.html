@@ -4,7 +4,7 @@
 <link href="{% static 'forums/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
   <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#" method="post">
+		<form action="register" method="post">
             {% csrf_token %}
 			<h1>Create Account</h1>
             <label>
@@ -21,7 +21,7 @@
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="{% url 'social:begin' 'github' %}" class="social"><i class="fab fa-github"></i></a>
 			</div>
-			<button>Sign Up</button>
+			<button type="submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
