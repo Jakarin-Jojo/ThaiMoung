@@ -11,28 +11,13 @@
 {% block content %}
 
 <form method="post">
-    {% csrf_token %}
   <h2> Create new forum </h2><br><br>
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title"><br><br>
-
-  <label for="description" >Description:</label>
-  <input type="text" id="description" name="description"><br><br>
-
-  <label>Category</label>
-    <select name="category" id="category" class="form-select" aria-label="Default select example">
-        <option selected>--- Select the choice ---</option>
-        <option>News</option>
-        <option>Sports</option>
-        <option>Games</option>
-        <option>Fashion</option>
-        <option>Technology</option>
-    </select><br><br>
-
+    {% csrf_token %}
+    {{ form.as_p }}
     <div class="container">
     <div class="row">
       <div class="col">
-        <a role="button" class="btn btn-success me-3" href="{% url 'main' %}">Post</a>
+          <button class="btn btn-success me-3">Post</button>
       </div>
       <div class="col">
         <a role="button" class="btn btn-outline-danger me-3" href="{% url 'main' %}">Back</a>
