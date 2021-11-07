@@ -60,7 +60,6 @@ MIDDLEWARE = [
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.google.GoogleOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
@@ -157,4 +156,3 @@ if not DEBUG:
     SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET', default='facebook-secret')
 
 django_heroku.settings(locals())
-
