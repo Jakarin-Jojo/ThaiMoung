@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User, auth
 
 
 def sign_in_and_sign_up(request):
@@ -19,4 +19,15 @@ def register(request):
     else:
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
+        return login(request)
+
+
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = auth.authenticate(username=username, password=password)
+    if user is None:
+        auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return redirect('main')
+    else:
+        return redirect('sign_in_and_sign_up')
