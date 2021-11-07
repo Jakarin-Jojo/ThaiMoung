@@ -27,10 +27,10 @@ def login(request):
     password = request.POST['password']
     user = auth.authenticate(username=username, password=password)
     if user is None:
+        return redirect('sign_in_and_sign_up')
+    else:
         auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return redirect('main')
-    else:
-        return redirect('sign_in_and_sign_up')
 
 
 def logout(request):
