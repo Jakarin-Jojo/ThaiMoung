@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY', default='dumb-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.thaimoung.herokuapp.com']
 
@@ -155,10 +155,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '579354623253-4fl13bq2jbocd8qh2r29q72j1ll4bb7v.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
 if not DEBUG:
     SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY', default='facebook-key')
     SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET', default='facebook-secret')
     SOCIAL_AUTH_GITHUB_KEY = env('SOCIAL_AUTH_GITHUB_KEY', default='github-key')
     SOCIAL_AUTH_GITHUB_SECRET = env('SOCIAL_AUTH_GITHUB_KEY', default='github-secret')
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', default='google-key')
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GITHUB_KEY', default='google-secret')
+
 
 django_heroku.settings(locals())

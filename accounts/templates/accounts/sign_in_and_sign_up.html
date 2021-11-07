@@ -17,7 +17,7 @@
                 <input type="password" placeholder="Password" name="password"/>
             </label>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="{% url 'social:begin' 'github' %}" class="social"><i class="fab fa-github"></i></a>
 			</div>
@@ -34,7 +34,7 @@
                 <input type="password" placeholder="Password" />
             </label>
             <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="{% url 'social:begin' 'github' %}" class="social"><i class="fab fa-github"></i></a>
 			</div>
