@@ -4,12 +4,19 @@
 <link href="{% static 'forums/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
   <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="#" method="post">
+            {% csrf_token %}
 			<h1>Create Account</h1>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-      <div class="social-container">
+            <label>
+                <input type="text" placeholder="Name" name="username"/>
+            </label>
+            <label>
+                <input type="email" placeholder="Email" name="email"/>
+            </label>
+            <label>
+                <input type="password" placeholder="Password" name="password"/>
+            </label>
+            <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-github"></i></a>
@@ -18,17 +25,21 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="#" method="post">
 			<h1>Sign in</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-      <div class="social-container">
+            <label>
+                <input type="email" placeholder="Email" />
+            </label>
+            <label>
+                <input type="password" placeholder="Password" />
+            </label>
+            <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="#" class="social"><i class="fab fa-github"></i></a>
 			</div>
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -41,7 +52,7 @@
 			<div class="overlay-panel overlay-right">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your account.</p>
-        <p>Don't have an account? Sign up here.</p>
+                <p>Don't have an account? Sign up here.</p>
 				<button class="ghost" id="signUp">Sign Up</button>
 			</div>
 		</div>
