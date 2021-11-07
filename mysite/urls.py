@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from django.shortcuts import redirect
 
+from forums import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('forums/', include('forums.urls')),
     path('', lambda request: redirect('forums/')),
+    path('sign_in_and_sign_up/', views.sign_in_and_sign_up, name="sign_in_and_sign_up"),
 ]

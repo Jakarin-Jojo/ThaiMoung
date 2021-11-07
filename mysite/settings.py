@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY', default='dumb-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['thaimoung.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.thaimoung.herokuapp.com']
 
 # Application definition
 
@@ -122,13 +122,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'forums/static'),
-)
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(config=locals(), staticfiles=False, logging=False)
+
+if 'SECRET_KEY' in os.environ:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+
