@@ -24,4 +24,5 @@ urlpatterns = [
     path('forums/', include('forums.urls')),
     path('', lambda request: redirect('forums/')),
     path('accounts/', include('accounts.urls')),
+    path('', include('social_django.urls', namespace='social'))
 ]
