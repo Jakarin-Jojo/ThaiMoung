@@ -152,8 +152,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if 'SECRET_KEY' in os.environ:
-    # Configure Django App for Heroku.
-    import django_heroku
-    django_heroku.settings(locals())
+if not DEBUG:
+    SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY', default='facebook-key')
+    SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET', default='facebook-secret')
+
+django_heroku.settings(locals())
 
