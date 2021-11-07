@@ -20,3 +20,8 @@ class RegistrationViewTests(TestCase):
         """Tests that after we get into the page, we must get a status code of 200"""
         response = self.client.get(reverse('create_forum'))
         self.assertEqual(response.status_code, 200)
+
+    def test_forum_page(self):
+        """Tests that after we get into the page, we must get a status code of 200"""
+        response = self.client.get(reverse("detail"))
+        self.assertEqual(response.status_code, 200)
