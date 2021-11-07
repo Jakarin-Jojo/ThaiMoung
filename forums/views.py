@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import CreateView
 
@@ -16,4 +16,4 @@ def sign_in_and_sign_up(request):
 class CreateForumView(CreateView):
     model = Post
     template_name = 'forums/create_forum.html'
-    fields = '__all__'
+    fields = ('title', 'description', 'category')
