@@ -31,3 +31,8 @@ def login(request):
         return redirect('main')
     else:
         return redirect('sign_in_and_sign_up')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('main')

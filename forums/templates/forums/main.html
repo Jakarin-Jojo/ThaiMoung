@@ -65,7 +65,7 @@
                     <div class="col" style="font-size: 20px"><a href="{% url 'sign_in_and_sign_up' %}"><i class="fas fa-cog"></i></a></div>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <div class="col" style="font-size: 20px"><a href="#"><i class="fas fa-sign-out-alt"></i></a></div>
+                    <div class="col" style="font-size: 20px"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a></div>
                     <div class="col" style="font-size: 20px"><a href="#"><i class="fas fa-cog"></i></a></div>
                 {% endif %}
             </div>
