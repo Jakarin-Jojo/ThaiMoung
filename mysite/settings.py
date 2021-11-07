@@ -72,6 +72,10 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 ROOT_URLCONF = 'mysite.urls'
 
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -154,5 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if not DEBUG:
     SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY', default='facebook-key')
     SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET', default='facebook-secret')
+    SOCIAL_AUTH_GITHUB_KEY = env('SOCIAL_AUTH_GITHUB_KEY', default='github-key')
+    SOCIAL_AUTH_GITHUB_SECRET = env('SOCIAL_AUTH_GITHUB_KEY', default='github-secret')
 
 django_heroku.settings(locals())
