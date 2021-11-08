@@ -83,9 +83,14 @@
     <div class="content">
         {% if object_list %}
             {% for post in object_list %}
-                  <div class="card">
-                    <p>{{ post.title }}</p>
+                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
+                  <div class="card" >
+                    <p style="color: #091121; font-size: 20px; font-weight: 650">{{ post.title }}<br>
+                        created by
+                      <span style="color: #fb084c">{{ post.user.username }}</span>
+                    </p>
                   </div>
+                </a>
             {% endfor %}
         {% else %}
             <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>
