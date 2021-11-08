@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
@@ -35,3 +36,6 @@ class Post(models.Model):
         """Save the slug of the forum object."""
         self.slug = self.slug or slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('main')

@@ -1,0 +1,125 @@
+{% extends 'forums/base.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=">
+<div class="container" style="margin-top: 50px">
+<div class="main-body p-0">
+            <!-- Forum Detail -->
+                <div class="card mb-2" style="background-color: #2e323e">
+                    <div class="card-body">
+                        <div class="media forum-item">
+                            <span class="d-block p-2 bg-dark text-white">
+                            <a href="#" class="text-decoration-none">
+                                <div class="d-flex flex-row user-info">
+                                    <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" width="50">
+                                    <div class="d-flex flex-column justify-content-start ml-2">
+                                        <span class="d-block font-weight-bold name" style="margin-left: 5px">Mokrani</span>
+                                        <span class="date text-white" style="margin-left: 5px">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </a>
+                            </span>
+                            <span class="d-block p-2 bg-dark text-white border-bottom border-4">
+                                <h3 class="mt-1" style="color: deeppink">Realtime fetching data</h3>
+                            </span>
+                            <span class="d-block p-2 bg-secondary text-white">
+                                <div class="media-body ml-3">
+                                    <div class="mt-3 font-size-sm">
+                                        <p>Hellooo :)</p>
+                                        <p>
+                                            I'm newbie with laravel and i want to fetch data from database in realtime for my dashboard anaytics and i found a solution with ajax but it dosen't work if any one have a simple solution it will be
+                                            helpful
+                                        </p>
+                                        <p>Thank</p>
+                                    </div>
+                                </div>
+                            <span/>
+                            <div class="text-center">
+                                <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span>
+                                <span><i class="far fa-comment ml-2"></i> 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-2" style="background-color: #2e323e">
+                    <div class="card-body">
+                        <div class="media forum-item">
+                            <span class="d-block p-2 bg-dark text-white border-bottom border-4">
+                                <a href="#" class="text-decoration-none">
+                                <div class="d-flex flex-row user-info">
+                                    <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" width="50">
+                                    <div class="d-flex flex-column justify-content-start ml-2">
+                                        <span class="d-block font-weight-bold name" style="margin-left: 5px">drewdan</span>
+                                        <span class="date text-white" style="margin-left: 5px">1 hour ago</span>
+                                    </div>
+                                </div>
+                                </a>
+                            </span>
+                            <span class="d-block p-2 bg-secondary text-white">
+                                <div class="media-body ml-3">
+                                    <div class="mt-3 font-size-sm">
+                                        <p>What exactly doesn't work with your ajax calls?</p>
+                                        <p>Also, WebSockets are a great solution for realtime data on a dashboard. Laravel offers this out of the box using broadcasting</p>
+                                    </div>
+                                    <button class="btn btn-xs has-icon"><i class="fa fa-heart" aria-hidden="true"></i>1</button>
+                                    <a href="javascript:void(0)">Reply</a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-2" style="background-color: #2e323e">
+                    <div class="card-body">
+                        <div class="media forum-item">
+                            <div class="d-flex flex-row align-items-start">
+                                <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" width="40">
+                                <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px"></textarea>
+                            </div>
+                            <div class="mt-2" style="text-align: end">
+                                <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
+                                <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- /Forum Detail -->
+
+            <!-- /Inner main body -->
+        </div>
+        <!-- /Inner main -->
+    </div>
+
+    <!-- New Thread Modal -->
+    <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header d-flex align-items-center bg-primary text-white">
+                        <h6 class="modal-title mb-0" id="threadModalLabel">New Discussion</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="threadTitle">Title</label>
+                            <input type="text" class="form-control" id="threadTitle" placeholder="Enter title" autofocus="" />
+                        </div>
+                        <textarea class="form-control summernote" style="display: none;"></textarea>
+
+                        <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
+                            <input type="file" class="custom-file-input" id="customFile" multiple="" />
+                            <label class="custom-file-label" for="customFile">Attachment</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
