@@ -81,11 +81,15 @@
     <!--sidebar end-->
 
     <div class="content">
-        {% for post in object_list %}
-              <div class="card">
-                <p>{{ post.title }}</p>
-              </div>
-        {% endfor %}
+        {% if object_list %}
+            {% for post in object_list %}
+                  <div class="card">
+                    <p>{{ post.title }}</p>
+                  </div>
+            {% endfor %}
+        {% else %}
+            <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>
+        {% endif %}
     </div>
     <script src="{% static 'forums/main.js' %}"></script>
 {% endblock %}
