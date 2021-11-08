@@ -9,11 +9,7 @@ from .models import Post
 def detail(request):
     return render(request, 'forums/detail.html')
 
-
-def sign_in_and_sign_up(request):
-    return render(request, 'forums/sign_in_and_sign_up.html')
-
-
+  
 class MainView(ListView):
     model = Post
     template_name = 'forums/main.html'
