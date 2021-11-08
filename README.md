@@ -10,9 +10,9 @@ ThaiMoung is a web forum application that provides services to create forums for
 [Vision Statement](../../wiki/Vision%20Statement)  
 [Requirements](../../wiki/Requirements)   
 
-### Iteration Plans
-[Script](../../wiki/Script)  
-[Checklist](../../wiki/Checklist)  
+### Code review
+* [Script](../../wiki/Script)  
+* [Checklist](../../wiki/Checklist)  
 
 ## Iteration
 
