@@ -51,3 +51,7 @@ def create_forum(request):
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
+
+
+def search(request):
+    return render(request, 'event/search_venues.html')
