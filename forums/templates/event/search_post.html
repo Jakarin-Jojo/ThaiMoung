@@ -65,7 +65,7 @@
         <div style="text-align: center;"><h1 style="color: #FFFFFF">You search {{ searched }} for what</h1></div>
         {% for post in post %}
             <div class="card">
-                <p>{{ post }}</p>
+                <p><a href="{% url 'detail' post.pk %}">{{ post }}</a></p>
             </div>
         {% endfor %}
     {% else %}
