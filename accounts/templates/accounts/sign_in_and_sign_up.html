@@ -50,7 +50,7 @@
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="{% url 'social:begin' 'github' %}" class="social"><i class="fab fa-github"></i></a>
 			</div>
-			<a href="#">Forgot your password?</a>
+			<a href="{% url 'password_reset' %}">Forgot your password?</a>
 			<button type="submit" class="submit">Sign In</button>
             <br>
             {% for message in messages %}
