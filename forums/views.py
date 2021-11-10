@@ -56,6 +56,7 @@ def create_forum(request):
 def search_venues(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        return render(request, 'event/search_venues.html', {'searched': searched})
+        venues = Post.objects.filter(title__contains=searched)
+        return render(request, 'event/search_venues.html', {'searched': searched, 'venues': venues})
     else:
         return render(request, 'event/search_venues.html', {})
