@@ -54,4 +54,8 @@ def create_forum(request):
 
 
 def search_venues(request):
-    return render(request, 'event/search_venues.html', {})
+    if request.method == "POST":
+        searched = request.POST['searched']
+        return render(request, 'event/search_venues.html', {'searched': searched})
+    else:
+        return render(request, 'event/search_venues.html', {})

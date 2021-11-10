@@ -60,7 +60,11 @@
     <!--sidebar end-->
 
     <div class="content">
-    <h1>Yo BITCH!!</h1>
+    {% if searched %}
+        <div style="text-align: center;"><h1 style="color: #FFFFFF">You search {{ searched }} for what</h1></div>
+    {% else %}
+        <div style="text-align: center;"><h1 style="color: #FFFFFF">You forgot to search idiot</h1></div>
+    {% endif %}
 {#        {% if object_list %}#}
 {#            {% for post in object_list %}#}
 {#                  <div class="card">#}
