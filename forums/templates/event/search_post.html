@@ -59,9 +59,15 @@
     </div>
     <!--sidebar end-->
 
+    <!--search result start-->
     <div class="content">
     {% if searched %}
         <div style="text-align: center;"><h1 style="color: #FFFFFF">You search {{ searched }} for what</h1></div>
+        {% for post in post %}
+            <div class="card">
+                <p>{{ post }}</p>
+            </div>
+        {% endfor %}
     {% else %}
         <div style="text-align: center;"><h1 style="color: #FFFFFF">You forgot to search idiot</h1></div>
     {% endif %}
@@ -75,5 +81,7 @@
 {#            <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>#}
 {#        {% endif %}#}
     </div>
+    <!--search result end-->
+
     <script src="{% static 'forums/main.js' %}"></script>
 {% endblock %}
