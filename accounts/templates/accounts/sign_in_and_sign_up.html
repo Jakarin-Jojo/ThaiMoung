@@ -2,20 +2,31 @@
 {% load static %}
 {% block content %}
 <link href="{% static 'forums/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
+    {% if form_register.errors %}
+        {% for field in form_register %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger " role="alert">
+                    {{ error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
   <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="register" method="post">
             {% csrf_token %}
-			<h1>Create Account</h1>
-            <label>
-                <input type="text" placeholder="Name" name="username"/>
-            </label>
-            <label>
-                <input type="email" placeholder="Email" name="email"/>
-            </label>
-            <label>
-                <input type="password" placeholder="Password" name="password"/>
-            </label>
+			<h4>Create Account</h4>
+            <h6>Username</h6>
+            {{ form_register.username }}
+            <h6>Email</h6>
+            {{ form_register.email }}
+            <h6>Password</h6>
+            {{ form_register.password1 }}
+            <h6>Confirm Password</h6>
+            {{ form_register.password2 }}
             <div class="social-container">
                 <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -32,7 +43,7 @@
                 <input type="text" placeholder="Username" name="username"/>
             </label>
             <label>
-                <input type="password" placeholder="Password" name="password"/>
+                <input type="password" placeholder="Password" name="password1"/>
             </label>
             <div class="social-container">
                 <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fab fa-google-plus-g"></i></a>
