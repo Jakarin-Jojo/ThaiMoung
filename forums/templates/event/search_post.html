@@ -62,24 +62,15 @@
     <!--search result start-->
     <div class="content">
     {% if searched %}
-        <div style="text-align: center;"><h1 style="color: #FFFFFF">You search {{ searched }} for what</h1></div>
+{#        <div style="text-align: center;"><h1 style="color: #FFFFFF">You search {{ searched }} for what</h1></div>#}
         {% for post in post %}
             <div class="card">
                 <p><a href="{% url 'detail' post.pk %}">{{ post }}</a></p>
             </div>
         {% endfor %}
     {% else %}
-        <div style="text-align: center;"><h1 style="color: #FFFFFF">You forgot to search idiot</h1></div>
+{#        <div style="text-align: center;"><h1 style="color: #FFFFFF">You forgot to search idiot</h1></div>#}
     {% endif %}
-{#        {% if object_list %}#}
-{#            {% for post in object_list %}#}
-{#                  <div class="card">#}
-{#                    <p>{{ post.title }}</p>#}
-{#                  </div>#}
-{#            {% endfor %}#}
-{#        {% else %}#}
-{#            <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>#}
-{#        {% endif %}#}
     </div>
     <!--search result end-->
 
