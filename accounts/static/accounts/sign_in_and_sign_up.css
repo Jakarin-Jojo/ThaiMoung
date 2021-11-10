@@ -11,7 +11,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 	font-family: "Nunito", serif;
-	height: 100vh;
+	height: 100%;
 	margin: -20px 0 50px;
 }
 
@@ -39,7 +39,7 @@ a {
 	margin: 15px 0;
 }
 
-button {
+button.submit {
 	border-radius: 20px;
 	border: 1px solid #FB0A52;
 	background-color: #FB0A52;
@@ -52,15 +52,15 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+button.submit:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+button.submit:focus {
 	outline: none;
 }
 
-button.ghost {
+button.submit.ghost {
 	background-color: #FB0A52;
 }
 
@@ -83,17 +83,7 @@ input {
 	width: 100%;
 }
 
-.container {
-	background-color: #fff;
-	border-radius: 25px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
+
 
 .form-container {
 	position: absolute;
