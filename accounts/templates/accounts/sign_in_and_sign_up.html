@@ -6,14 +6,14 @@
 	<div class="form-container sign-up-container">
 		<form action="register" method="post">
             {% csrf_token %}
-			<h4>Create Account</h4>
-            <h6>Username</h6>
+			<h1>Create Account</h1>
+            <h4>Username</h4>
             {{ form_register.username }}
-            <h6>Email</h6>
+            <h4>Email</h4>
             {{ form_register.email }}
-            <h6>Password</h6>
+            <h4>Password</h4>
             {{ form_register.password1 }}
-            <h6>Confirm Password</h6>
+            <h4>Confirm Password</h4>
             {{ form_register.password2 }}
             <div class="social-container">
                 <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fab fa-google-plus-g"></i></a>
