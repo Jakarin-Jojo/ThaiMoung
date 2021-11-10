@@ -53,5 +53,5 @@ def create_forum(request):
     return render(request, 'forums/create_forum.html', {'form': form})
 
 
-def search(request):
-    return render(request, 'event/search_venues.html')
+def search_venues(request):
+    return render(request, 'event/search_venues.html', {})
