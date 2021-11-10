@@ -1,7 +1,7 @@
 {% extends 'forums/base.html' %}
 {% load static %}
 {% block content %}
-<link href="{% static 'forums/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'forums/../../static/accounts/sign_in_and_sign_up.css' %}" rel="stylesheet" type="text/css" />
     {% if form_register.errors %}
         {% for field in form_register %}
             {% for error in field.errors %}
@@ -70,5 +70,5 @@
 		</div>
 	</div>
 </div>
-    <script src="{%static 'forums/sign_in_and_sign_up.js'%}"></script>
+    <script src="{%static 'forums/../../static/accounts/sign_in_and_sign_up.js' %}"></script>
 {% endblock %}
