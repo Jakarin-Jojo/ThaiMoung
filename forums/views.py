@@ -60,3 +60,10 @@ def search_post(request):
         return render(request, 'event/search_post.html', {'searched': searched, 'post': post})
     else:
         return render(request, 'event/search_post.html', {})
+
+
+def filter_category(request, cate):  # cate = News, Sport, ...
+    category_posts = Post.objects.filter(category=cate)
+    return render(request,
+                  'event/categories.html',
+                  {'cate': cate, 'category_post': category_posts})
