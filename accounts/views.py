@@ -10,9 +10,8 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            login_user(request)
-            return redirect('main')
+            messages.success(request, f'Congratulations! Successful account creation.')
+            return redirect('register_user')
     else:
         form = UserRegisterForm()
     return render(request, 'accounts/sign_in_and_sign_up.html', {'form_register': form})
@@ -28,7 +27,7 @@ def login_user(request):
             return redirect('main')
         else:
             messages.warning(request, 'Username or Password is incorrect.')
-    return redirect('register')
+    return redirect('register_user')
 
 
 def logout_user(request):
