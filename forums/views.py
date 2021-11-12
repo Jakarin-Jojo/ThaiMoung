@@ -51,3 +51,12 @@ def create_forum(request):
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
+
+
+def search_post(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        post = Post.objects.filter(title__contains=searched)
+        return render(request, 'event/search_post.html', {'searched': searched, 'post': post})
+    else:
+        return render(request, 'event/search_post.html', {})
