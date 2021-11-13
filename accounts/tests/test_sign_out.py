@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 
 
 class SignOutTest(TestCase):
-    """Tests for signing out."""
+    """Testing for sign out."""
 
     def setUp(self):
-        """Initialize a user with username, email, password and first name."""
+        """Initialize a user with username, email, password."""
         self.credentials = {
             'username': 'tester',
             'password': 'secret123456',
