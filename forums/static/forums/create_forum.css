@@ -17,20 +17,10 @@ h2 {
 	font-weight: bold;
 }
 
-.btn {
-	font-size: 17px;
-	font-weight: bold;
-	border-width: 2px;
-}
-
 label {
-	text-align: left;
 	color: #FFFFFF;
 	font-size: 25px;
-}
-
-select.form-select {
-	border-radius: 10px;
+	text-align: -webkit-left;
 }
 
 form {
@@ -39,18 +29,48 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 15px 50px 0;
 	height: 100%;
-	text-align: center;
-	margin-top: 45px;
+	margin-top: 50px;
+	margin-left: 200px;
+	margin-right: 200px;
 	border-radius: 50px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+			0 10px 10px rgba(0,0,0,0.22);
 }
 
 input {
 	background-color: #eee;
+	font-size: 17px;
+	justify-content: center;
 	border: none;
-	padding: 12px 15px;
-	margin: 8px 200px;
+	padding: 8px 147px;
+	margin: 8px 0;
+	border-radius: 10px;
+}
+
+textarea {
+	background-color: #eee;
+	font-size: 17px;
+	position: center;
+	padding: 8px 15px;
+	margin: 8px 0;
 	width: 100%;
 	border-radius: 10px;
+}
+
+select {
+	font-size: 17px;
+	text-align: center;
+	padding: 8px 160px;
+	margin: 8px 0;
+	border-radius: 10px;
+}
+
+.btn {
+	font-size: 17px;
+	font-weight: bold;
+	border-width: 2px;
+	text-align: center;
+	margin: 15px 152px;
 }
