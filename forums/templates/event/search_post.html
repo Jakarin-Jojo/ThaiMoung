@@ -21,7 +21,7 @@
 
     <!--search result start-->
     <div class="content">
-        {% if searched %}
+        {% if searched and post %}
             {% for post in post %}
                 <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
                     <div class="card" >
@@ -34,7 +34,7 @@
                 </a>
             {% endfor %}
         {% else %}
-            <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>
+            <div style="text-align: center;"><h1 style="color: #FFFFFF">The forum you searched for doesn't exist</h1></div>
         {% endif %}
     </div>
     <!--search result end-->
