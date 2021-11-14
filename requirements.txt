@@ -11,6 +11,6 @@ psycopg2 == 2.9.2
 social-auth-app-django == 5.0.0
 psycopg2-binary == 2.9.2
 social-auth-core >= 4.1.0
-django-crispy-forms == 1.13.0
 Pillow == 8.4.0
+crispy-bootstrap5 == 0.6
 
