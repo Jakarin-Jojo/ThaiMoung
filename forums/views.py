@@ -56,7 +56,16 @@ def create_forum(request):
 def search_post(request):
     if request.method == "POST":
         searched = request.POST['searched']
+        if searched == '':
+            return redirect('main')
         post = Post.objects.filter(title__contains=searched)
         return render(request, 'event/search_post.html', {'searched': searched, 'post': post})
     else:
         return render(request, 'event/search_post.html', {})
+
+
+def filter_category(request, cate):  # cate = News, Sport, ...
+    category_posts = Post.objects.filter(category=cate)
+    return render(request,
+                  'event/categories.html',
+                  {'cate': cate, 'category_post': category_posts})
