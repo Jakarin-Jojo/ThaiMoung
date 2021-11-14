@@ -2,16 +2,16 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="content-section">
+    <div class="content-section text-center">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="300" height="300">
         <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+          <h2 class="text-info">{{ user.username }}</h2>
+          <p class="text-info">{{ user.email }}</p>
         </div>
       </div>
     </div>
 
-<button type="button" class="btn btn-info">Back</button>
+<a role="button" class="btn btn-primary me-3" href="{% url 'main' %}">Back</a>
 
 {% endblock content %}

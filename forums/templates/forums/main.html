@@ -33,7 +33,7 @@
     <!--sidebar start-->
     <div class="sidebar">
       <div class="profile_info">
-        <img src="{% static 'forums/user-icon.png' %}" class="profile_image" alt="">
+          <img class="profile_image" src="{{ user.profile.image.url }}" alt="">
           {% if user.is_authenticated %}
             <h4>{{ user.username }}</h4>
           {% else %}
