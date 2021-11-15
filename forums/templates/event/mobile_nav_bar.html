@@ -1,7 +1,11 @@
 {% load static %}
 <div class="mobile_nav">
       <div class="nav_bar">
-        <img src="{% static 'forums/user-icon.png' %}" class="mobile_profile_image" alt="">
+        {% if user.profile.image.url %}
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="50" height="50" alt="">
+          {% else %}
+                <img class="rounded-circle account-img" src="{% static 'forums/default.png' %}" width="50" height="50" alt="">
+          {% endif %}
         <i class="fa fa-bars nav_btn"></i>
       </div>
       <div class="mobile_nav_items">
@@ -10,6 +14,6 @@
         <a class="nav text-decoration-none" href="{% url 'category' 'games' %}"><i class="fas fa-gamepad"></i><span>Games</span></a>
         <a class="nav text-decoration-none" href="{% url 'category' 'fashion' %}"><i class="fas fa-tshirt"></i><span>Fashion</span></a>
         <a class="nav text-decoration-none" href="{% url 'category' 'technology' %}"><i class="fas fa-microchip"></i><span>Technology</span></a>
-        <a class="nav text-decoration-none" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+        <a class="nav text-decoration-none" href="{% url 'profile' %}"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
       </div>
 </div>

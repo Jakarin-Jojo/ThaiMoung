@@ -9,7 +9,7 @@ CATEGORY = [
     ('', '----------'),
     ('news', 'News'),
     ('sports', 'Sports'),
-    ('game', 'Games'),
+    ('games', 'Games'),
     ('fashion', 'Fashion'),
     ('technology', 'Technology'),
 ]
