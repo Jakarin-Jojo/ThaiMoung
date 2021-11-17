@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+
+from forums.models import Post
 from .forms import UserUpdateForm, ProfileUpdateForm
 from .models import Profile
 
@@ -21,7 +23,7 @@ def edit_profile(request, username):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            return profile(request, username)
 
     else:
         u_form = UserUpdateForm(instance=request.user)
@@ -42,7 +44,8 @@ def profile(request, username):
     except User.DoesNotExist:
         messages.warning(request, 'Please login.')
         return redirect('register_user')
+    post_user = Post.objects.filter(user=user)
     user_profile = Profile.objects.get(user=user)
     user_profile.save()
-    context = {'user_profile': user_profile, 'user_post': user}
+    context = {'user_profile': user_profile, 'user_post': user, 'post_user': post_user}
     return render(request, 'users/profile.html', context)
