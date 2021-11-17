@@ -40,6 +40,5 @@ def profile(request, username):
     user = User.objects.get(username=username)
     user_profile = Profile.objects.get(user=user)
     user_profile.save()
-    context = {'user_profile': user_profile}
+    context = {'user_profile': user_profile, 'user_post': user}
     return render(request, 'users/profile.html', context)
-

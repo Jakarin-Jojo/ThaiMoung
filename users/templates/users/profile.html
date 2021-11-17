@@ -5,16 +5,18 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-9 col-xl-7">
         <div class="card">
-          <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+          <div class="rounded-top text-white d-flex flex-row" style="background-color: #1a202c; height:200px;">
             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-              <img src="{{ user.profile.image.url }}" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
-              <a href="{% url 'edit_profile' user.username %}" type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1;">
-                Edit profile
-              </a>
+              <img src="{{ user_post.profile.image.url }}" alt="" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                {% if user.username == user_post.username %}
+                <button type="button" class="btn btn-danger" data-mdb-ripple-color="dark" style="z-index: 1;">
+                    <a href="{% url 'edit_profile' user_post.username %}" class="text-decoration-none" style="color: #FFFFFF">Edit profile</a>
+                </button>
+                {% endif %}
             </div>
             <div class="ms-3" style="margin-top: 130px;">
-              <h5>{{ user.username }}</h5>
-              <p>{{ user.email }}</p>
+              <h5>{{ user_post.username }}</h5>
+              <p>{{ user_post.email }}</p>
             </div>
           </div>
           <div class="p-4 text-black" style="background-color: #f8f9fa;">
