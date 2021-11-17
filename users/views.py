@@ -7,7 +7,7 @@ from .models import Profile
 
 
 @login_required(login_url='/accounts/login')
-def profile(request, username):
+def edit_profile(request, username):
     user = User.objects.get(username=username)
     user_profile = Profile.objects.get(user=user)
     user_profile.save()
@@ -33,4 +33,13 @@ def profile(request, username):
         'user_profile': user_profile
     }
 
+    return render(request, 'users/edit_profile.html', context)
+
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    user_profile = Profile.objects.get(user=user)
+    user_profile.save()
+    context = {'user_profile': user_profile}
     return render(request, 'users/profile.html', context)
+
