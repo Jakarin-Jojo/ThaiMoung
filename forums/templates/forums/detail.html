@@ -11,11 +11,7 @@
                             <span class="d-block p-2 bg-dark text-white">
                             <a href="#" class="text-decoration-none">
                                 <div class="d-flex flex-row user-info">
-                                    {% if post.user.profile.image_profile.url %}
-                                        <img class="rounded-circle account-img" src="{{ post.user.profile.image_profile.url }}" width="80" height="80" alt="">
-                                    {% else %}
-                                        <img class="rounded-circle account-img" src="{% static 'forums/default.png' %}" width="80" height="80" alt="">
-                                    {% endif %}
+                                        <img class="rounded-circle account-img" src="{{ post.user.profile.image_profile.url }}" width="80" height="80" alt="{{ post.user.username }}">
                                     <div class="d-flex flex-column justify-content-start ml-2">
                                         <a href="{% url 'profile' post.user.username %}" class="text-decoration-none" ><span class="d-block font-weight-bold name" style="margin-left: 5px">{{ post.user }}</span></a>
                                         <span class="date text-white" style="margin-left: 5px">1 hour ago</span>
@@ -71,10 +67,10 @@
                     <div class="card-body">
                         <div class="media forum-item">
                             <div class="d-flex flex-row align-items-start">
-                                {% if user.profile.image_profile.url %}
-                                    <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="50" height="50" alt="">
+                                {% if user.is_authenticated %}
+                                    <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="50" height="50" alt="{{ user.username }}">
                                 {% else %}
-                                    <img class="profile_image" src="{% static 'forums/default.png' %}" width="50" height="50" alt="">
+                                    <img class="rounded-circle account-img" src="{% static 'users/default.png' %}" width="50" height="50" alt="default-profile">
                                 {% endif %}
                                     <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px"></textarea>
                             </div>

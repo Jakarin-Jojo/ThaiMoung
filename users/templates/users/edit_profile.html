@@ -6,7 +6,7 @@
 {% block content %}
     <div class="content-section text-center">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width=200" height="200" alt="">
+        <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width=200" height="200" alt="{{ user.username }}image">
         <div class="media-body">
           <h2 class="text-info">{{ user.username }}</h2>
           <p class="text-info">{{ user.email }}</p>
