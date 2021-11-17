@@ -37,7 +37,11 @@ def edit_profile(request, username):
 
 
 def profile(request, username):
-    user = User.objects.get(username=username)
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        messages.warning(request, 'Please login.')
+        return redirect('register_user')
     user_profile = Profile.objects.get(user=user)
     user_profile.save()
     context = {'user_profile': user_profile, 'user_post': user}

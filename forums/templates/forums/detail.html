@@ -17,7 +17,7 @@
                                         <img class="rounded-circle account-img" src="{% static 'forums/default.png' %}" width="80" height="80" alt="">
                                     {% endif %}
                                     <div class="d-flex flex-column justify-content-start ml-2">
-                                        <a href="{% url 'profile' post.user.username %}"><span class="d-block font-weight-bold name" style="margin-left: 5px">{{ post.user }}</span></a>
+                                        <a href="{% url 'profile' post.user.username %}" class="text-decoration-none" ><span class="d-block font-weight-bold name" style="margin-left: 5px">{{ post.user }}</span></a>
                                         <span class="date text-white" style="margin-left: 5px">1 hour ago</span>
                                     </div>
                                 </div>
@@ -71,8 +71,12 @@
                     <div class="card-body">
                         <div class="media forum-item">
                             <div class="d-flex flex-row align-items-start">
-                                <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" width="40" alt="">
-                                <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px"></textarea>
+                                {% if user.profile.image.url and user.is_authenticated %}
+                                    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="50" height="50" alt="">
+                                {% else %}
+                                    <img class="profile_image" src="{% static 'forums/default.png' %}" width="50" height="50" alt="">
+                                {% endif %}
+                                    <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px"></textarea>
                             </div>
                             <div class="mt-2" style="text-align: end">
                                 <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
@@ -119,7 +123,5 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 
 {% endblock %}
