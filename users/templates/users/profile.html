@@ -8,7 +8,7 @@
         <div class="card">
           <div class="rounded-top text-white d-flex flex-row" style= "background-color: black; height:200px;">
             <div class="ms-4 mt-5 d-flex flex-column" style=" width: 150px;">
-                {% if user.profile.image_profile %}
+                {% if user_profile.image_profile %}
                 <img src="{{ user_profile.image_profile.url }}" alt="{{ user_post.username }}" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                 {% else %}
                     <img class="img-fluid img-thumbnail mt-4 mb-2" src="{% static 'users/default.png' %}" alt="default-profile" style="width: 150px; z-index: 1">
