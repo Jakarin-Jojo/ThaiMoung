@@ -47,7 +47,7 @@
             {% if post_user %}
                 {% for post in post_user %}
                     <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
-                        <div class="card" style="background-color:white; border-radius: 10px;">
+                        <div class="card" style="background-color:white; border-radius: 10px; margin: 5px">
                             <p style="color: #091121; font-size: 20px; font-weight: 650; padding-left: 20px; padding-top: 10px; ">{{ post.title }}<br>
                                 created by
                                 <span style="color: #fb084c; font-weight: bolder">{{ post.user.username }}</span>

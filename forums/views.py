@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -12,6 +14,11 @@ class MainView(ListView):
     model = Post
     template_name = 'forums/main.html'
 
+    def get_queryset(self):
+        """Return: the last five published questions."""
+        return Post.objects.filter(
+            post_date__lte=timezone.now()
+        ).order_by('-post_date')
 
 # class CreateForumView(CreateView):
 #     model = Post
