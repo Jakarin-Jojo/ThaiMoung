@@ -1,7 +1,7 @@
 {% load static %}
 <div class="mobile_nav">
       <div class="nav_bar">
-        {% if user.is_authenticated %}
+        {% if user.profile.image_profile %}
             <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="50" height="50" alt="{{ user.username }}">
           {% else %}
              <img class="rounded-circle account-img" src="{% static 'users/default.png' %}" width="50" height="50" alt="default-profile">
