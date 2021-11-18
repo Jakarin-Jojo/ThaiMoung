@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 
 from .forms import PostForm
 from .models import Post
