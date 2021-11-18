@@ -5,8 +5,9 @@ branch = True
 cover_pylib = False
 
 omit =
-    tests/*
-    migrations/*
+    */tests/*
+    */migrations/*
     manage.py
     staticfiles/*
     setting.py
+    */__init__.py

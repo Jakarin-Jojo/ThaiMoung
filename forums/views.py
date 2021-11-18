@@ -1,22 +1,24 @@
+from django.utils import timezone
+
 from django.contrib import messages
 from django.db import IntegrityError
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 
 from .forms import PostForm
 from .models import Post
 
 
-def detail(request, pk):
-    return render(request, 'forums/detail.html')
-
-  
 class MainView(ListView):
     model = Post
     template_name = 'forums/main.html'
 
+    def get_queryset(self):
+        """Return: the last five published questions."""
+        return Post.objects.filter(
+            post_date__lte=timezone.now()
+        ).order_by('-post_date')
 
 # class CreateForumView(CreateView):
 #     model = Post
