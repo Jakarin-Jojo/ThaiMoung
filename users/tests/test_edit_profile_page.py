@@ -7,12 +7,14 @@ class EditProfileViewTest(TestCase):
     """Test for EditProfile page."""
 
     def test_edit_profile_page_without_edit_profile(self):
+        """Test Accessing the edit_profile page without modifying the profile"""
         user = User.objects.create_user(username='tester', password='secret123456')
         self.client.login(username='tester', password='secret123456')
         response = self.client.get(reverse('edit_profile', args=['tester']))
         self.assertEqual(response.status_code, 200)
 
     def test_edit_profile_page_with_edit_profile(self):
+        """Test Accessing the edit_profile page with modifying the profile"""
         user = User.objects.create_user(username='tester', password='secret123456', email='user1@gmail.com')
         self.client.login(username='tester', password='secret123456')
 
