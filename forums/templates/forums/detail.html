@@ -69,13 +69,6 @@
                                     <a href="javascript:void(0)">Reply</a>
                                 </div>
                             </span>
-                            <form method="POST" action="{% url 'like' post.pk%}" class="text-center">
-                              {% csrf_token %}
-                              <button class="btn" type="submit">
-                                <i class="fas fa-thumbs-up" style="font-size: 25px; color: whitesmoke; margin-top: 5px;"></i>
-                              </button>
-                               <span style="color:lawngreen ">{{ post.likes.all.count }}</span>
-                            </form>
                         </div>
                     </div>
                 </div>
