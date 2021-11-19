@@ -77,6 +77,15 @@ def filter_category(request, cate):  # cate = News, Sport, ...
 @login_required(login_url='/accounts/login')
 def like_post(request, pk):
     post = Post.objects.get(pk=pk)
+    is_disliked = False
+
+    for dislike in post.dislike.all():
+        if dislike == request.user:
+            is_disliked = True
+
+    if is_disliked:
+        post.dislike.remove(request.user)
+
     is_liked = False
 
     for like in post.likes.all():
@@ -88,4 +97,32 @@ def like_post(request, pk):
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user)
+    return redirect('detail', pk)
+
+
+@login_required(login_url='/accounts/login')
+def dislike_post(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
+
+    is_dislike = False
+
+    for dislike in post.dislike.all():
+        if dislike == request.user:
+            is_dislike = True
+            break
+
+    if is_dislike:
+        post.dislike.remove(request.user)
+    else:
+        post.dislike.add(request.user)
     return redirect('detail', pk)
