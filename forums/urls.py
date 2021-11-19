@@ -8,4 +8,5 @@ urlpatterns = [
     path('create_forum/', views.create_forum, name='create_forum'),
     path('search/', views.search_post, name='search'),
     path('category/<str:cate>/', views.filter_category, name='category'),
+    path('detail/<int:pk>/like', views.like_post, name='like')
 ]

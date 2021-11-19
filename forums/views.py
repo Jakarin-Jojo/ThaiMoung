@@ -20,6 +20,7 @@ class MainView(ListView):
             post_date__lte=timezone.now()
         ).order_by('-post_date')
 
+
 # class CreateForumView(CreateView):
 #     model = Post
 #     form_class = PostForm
@@ -71,3 +72,20 @@ def filter_category(request, cate):  # cate = News, Sport, ...
     return render(request,
                   'event/categories.html',
                   {'cate': cate, 'category_post': category_posts})
+
+
+@login_required(login_url='/accounts/login')
+def like_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return redirect('detail', pk)
