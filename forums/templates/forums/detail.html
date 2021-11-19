@@ -35,19 +35,19 @@
                                 </div>
                             </span>
                             <div class="text-center">
-                                <span style="color:lawngreen " class="d-none d-sm-inline-block" ><form method="POST" action="{% url 'like' post.pk%}">
+                                <span style="color:lawngreen " class="d-none d-sm-inline-block" ><form method="POST" action="{% url 'likes' post.pk%}">
                                     {% csrf_token %}
                                     <button class="btn" type="submit">
                                         <i class="fas fa-thumbs-up" style="font-size: 25px; color: whitesmoke;"></i>
                                     </button>
                                     {{ post.likes.all.count }}
                                 </form></span>
-                                <span style="color:#fb084c" class="d-none d-sm-inline-block"><form method="POST" action="{% url 'dislike' post.pk%}">
+                                <span style="color:#fb084c" class="d-none d-sm-inline-block"><form method="POST" action="{% url 'dislikes' post.pk%}">
                                     {% csrf_token %}
                                     <button class="btn" type="submit" style="margin-top: 10px">
                                         <i class="fas fa-thumbs-down" style="font-size: 25px; color: whitesmoke;"></i>
                                     </button>
-                                    {{ post.dislike.all.count }}
+                                    {{ post.dislikes.all.count }}
                                 </form></span>
                             </div>
                         </div>

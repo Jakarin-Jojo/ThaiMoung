@@ -29,7 +29,7 @@ class Post(models.Model):
                              blank=True,
                              on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
-    dislikes = models.ManyToManyField(User, blank=True, related_name='dislike')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
 
     def __str__(self):
         """Return a string representation of the title of forum."""
