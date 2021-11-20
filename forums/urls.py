@@ -9,5 +9,6 @@ urlpatterns = [
     path('create_forum/', views.create_forum, name='create_forum'),
     path('search/', views.search_post, name='search'),
     path('category_<str:cate>/', views.filter_category, name='category'),
-    path('topic_<str:topic>', views.filter_topic, name='topic')
+    path('topic_<str:topic>', views.filter_topic, name='topic'),
+    path('topic_<str:topic>/search', views.search_post_topic, name='searched'),
 ]
