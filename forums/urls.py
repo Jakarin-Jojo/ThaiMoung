@@ -10,5 +10,5 @@ urlpatterns = [
     path('search/', views.search_post, name='search'),
     path('category_<str:cate>/', views.filter_category, name='category'),
     path('topic_<str:topic>', views.filter_topic, name='topic'),
-    path('topic_<str:topic>/search', views.search_post_topic, name='searched'),
+    path('topic_<str:topic>/search', views.search_post_topic, name='search_topic'),
 ]
