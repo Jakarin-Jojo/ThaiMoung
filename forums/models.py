@@ -9,10 +9,25 @@ CATEGORY = [
     ('', '----------'),
     ('news', 'News'),
     ('sports', 'Sports'),
-    ('game', 'Games'),
+    ('games', 'Games'),
     ('fashion', 'Fashion'),
     ('technology', 'Technology'),
 ]
+
+
+class Topic(models.Model):
+    """A class that collect the list of post."""
+
+    topic_name = models.CharField(max_length=20)
+    category = models.CharField(max_length=20, choices=CATEGORY, default='')  # category of the topic
+    topic_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        """Return a string representation of the topic."""
+        return self.topic_name
+
+    def get_absolute_url(self):
+        return reverse('main')
 
 
 class Post(models.Model):
@@ -20,7 +35,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=50)  # title of the forum
     description = models.TextField(max_length=500)  # description of the forum
-    category = models.CharField(max_length=20, choices=CATEGORY, default='')  # category of the forum
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)  # topic of the forum
     post_date = models.DateTimeField(default=timezone.now)  # created date of the forum
     slug = models.SlugField(unique=True, allow_unicode=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,

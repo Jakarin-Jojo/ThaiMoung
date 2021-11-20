@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, ListView, DetailView
 
-from .forms import PostForm
-from .models import Post
+from .forms import PostForm, PostTopicForm
+from .models import Post, Topic
 
 
 def detail(request, pk):
@@ -14,7 +14,7 @@ def detail(request, pk):
 
   
 class MainView(ListView):
-    model = Post
+    model = Topic
     template_name = 'forums/main.html'
 
 
@@ -27,6 +27,30 @@ class MainView(ListView):
 class DetailForumView(DetailView):
     model = Post
     template_name = 'forums/detail.html'
+
+
+@login_required(login_url='/accounts/login')
+def create_topic(request):
+    """Create a new topic.
+    Returns:
+    HttpResponseObject -- new event topic
+    """
+    if request.method == 'POST':
+        topic_form = PostTopicForm(request.POST, request.FILES)
+        if topic_form.is_valid():
+            topic = topic_form.cleaned_data['topic_name']
+            try:
+                event = topic_form.save()
+            except IntegrityError:
+                messages.warning(request, f'Topic {topic} is already exists.')
+                return redirect('main')
+            event.user = request.user
+            event.save()
+            messages.success(request, f'{topic} has been created.')
+            return redirect('main')
+    else:
+        topic_form = PostTopicForm()
+    return render(request, 'forums/create_topic.html', {'topic_form': topic_form})
 
 
 @login_required(login_url='/accounts/login')
@@ -65,7 +89,14 @@ def search_post(request):
 
 
 def filter_category(request, cate):  # cate = News, Sport, ...
-    category_posts = Post.objects.filter(category=cate)
+    category_topic = Topic.objects.filter(category=cate)
     return render(request,
                   'event/categories.html',
-                  {'cate': cate, 'category_post': category_posts})
+                  {'cate': cate, 'category_topic': category_topic})
+
+
+def filter_topic(request, topic):
+    topic_posts = Post.objects.filter(category=topic)
+    return render(request,
+                  'event/categories.html',
+                  {'topic': topic, 'category_post': topic_posts})

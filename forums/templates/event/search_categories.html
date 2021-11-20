@@ -10,9 +10,7 @@
 {% block content %}
     <input type="checkbox" id="check">
     <!--header area start-->
-    <header>
     {% include 'event/navbar.html' %}
-    </header>
     <!--header area end-->
     <!--mobile navigation bar start-->
     {% include 'event/mobile_nav_bar.html' %}
@@ -21,21 +19,24 @@
     {% include 'event/sidebar.html' %}
     <!--sidebar end-->
 
+    <!--search result start-->
     <div class="content">
-        {% if object_list %}
-            {% for topic in object_list %}
-                <a href="{% url 'detail' topic.pk %}" class="text-decoration-none">
-                  <div class="card" >
-                    <p style="color: #091121; font-size: 24px; font-weight: 650">
-                        <span style="color: #fb084c; font-size: 22px">[ {{ topic.category }} ]</span>
-                        - {{ topic.topic_name }}
-                    </p>
-                  </div>
+        {% if category_search %}
+            {% for post in category_search %}
+                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
+                    <div class="card" >
+                        <p style="color: #091121; font-size: 20px; font-weight: 650">{{ post.title }}<br>
+                            created by
+                            <span style="color: #fb084c">{{ post.user.username }}</span>
+                        </p>
+                    </div>
                 </a>
             {% endfor %}
         {% else %}
-            <div style="text-align: center;"><h1 style="color: #FFFFFF">No forums</h1></div>
+            <div style="text-align: center;"><h1 style="color: #FFFFFF">Not forums</h1></div>
         {% endif %}
     </div>
+    <!--search result end-->
+
     <script src="{% static 'forums/main.js' %}"></script>
 {% endblock %}
