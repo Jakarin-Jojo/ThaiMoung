@@ -18,12 +18,6 @@ class MainView(ListView):
     template_name = 'forums/main.html'
 
 
-# class CreateForumView(CreateView):
-#     model = Post
-#     form_class = PostForm
-#     template_name = 'forums/create_forum.html'
-
-
 class DetailForumView(DetailView):
     model = Post
     template_name = 'forums/detail.html'
@@ -96,7 +90,7 @@ def filter_category(request, cate):  # cate = News, Sport, ...
 
 
 def filter_topic(request, topic):
-    topic_posts = Post.objects.filter(category=topic)
+    topic_post = Post.objects.filter(topic=topic)
     return render(request,
-                  'event/categories.html',
-                  {'topic': topic, 'category_post': topic_posts})
+                  'event/posted_forum.html',
+                  {'topic': topic, 'topic_post': topic_post})
