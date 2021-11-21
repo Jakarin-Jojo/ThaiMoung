@@ -1,35 +1,38 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
-from accounts.forms import UserRegisterForm
+from django.contrib.auth.models import User, auth
+
+
+def sign_in_and_sign_up(request):
+    return render(request, 'accounts/sign_in_and_sign_up.html')
 
 
 def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Congratulations! Successful account creation for {username}.')
-            return redirect('register_user')
+    username = request.POST['username']
+    email = request.POST['email']
+    password = request.POST['password']
+    if User.objects.filter(username=username).exists():
+        return redirect('sign_in_and_sign_up')
+    elif User.objects.filter(email=email).exists():
+        return redirect('sign_in_and_sign_up')
+    elif User.objects.filter(password=password).exists():
+        return redirect('sign_in_and_sign_up')
     else:
-        form = UserRegisterForm()
-    return render(request, 'accounts/sign_in_and_sign_up.html', {'form_register': form})
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        return login(request)
 
 
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('main')
-        else:
-            messages.warning(request, 'Username or Password is incorrect.')
-    return redirect('register_user')
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = auth.authenticate(username=username, password=password)
+    if user is None:
+        return redirect('sign_in_and_sign_up')
+    else:
+        auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        return redirect('main')
 
 
-def logout_user(request):
-    logout(request)
+def logout(request):
+    auth.logout(request)
     return redirect('main')

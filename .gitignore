@@ -131,6 +131,3 @@ dmypy.json
 
 # django
 .idea/
-
-# media (profile pictures)
-media/*
