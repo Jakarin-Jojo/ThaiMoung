@@ -102,7 +102,7 @@ def search_post_topic(request, topic):
         if searched == '':
             return redirect('main')
         post = Post.objects.filter(topic=topic).filter(title__contains=searched)
-        return render(request, 'event/search_post.html', {'searched': searched, 'post': post})
+        return render(request, 'event/search_post.html', {'searched': searched, 'post': post, 'topic': topic})
     else:
         return render(request, 'event/search_post.html', {})
 
