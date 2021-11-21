@@ -13,7 +13,7 @@
     {% include 'event/navbar/main.html' %}
     <!--header area end-->
     <!--mobile navigation bar start-->
-    {% include 'event/navbar/topic.html' %}
+    {% include 'event/mobile_nav_bar.html' %}
     <!--mobile navigation bar end-->
     <!--sidebar start-->
     {% include 'event/sidebar.html' %}
@@ -21,20 +21,19 @@
 
     <!--search result start-->
     <div class="content">
-        {% if searched and post %}
-            {% for post in post %}
-                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
-                    <div class="card" >
-                        <p style="color: #091121; font-size: 20px; font-weight: 650">{{ post.title }}<br>
-                            created by
-                            <span style="color: #fb084c">{{ post.user.username }}</span>
-                                <span style="color: #161b28; font-size: small">({{ post.post_date }})</span>
-                        </p>
-                    </div>
+        {% if searched and topic %}
+            {% for topic in topic %}
+                <a href="{% url 'topic' topic.pk %}" class="text-decoration-none">
+                  <div class="card" >
+                    <p style="color: #091121; font-size: 24px; font-weight: 650">
+                        <span style="color: #fb084c; font-size: 22px">[ {{ topic.category }} ]</span>
+                        - {{ topic.topic_name }}
+                    </p>
+                  </div>
                 </a>
             {% endfor %}
         {% else %}
-            <div style="text-align: center;"><h1 style="color: #FFFFFF">The forum you searched for doesn't exist</h1></div>
+            <div style="text-align: center;"><h1 style="color: #FFFFFF">No topic yet........</h1></div>
         {% endif %}
     </div>
     <!--search result end-->

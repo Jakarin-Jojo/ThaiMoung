@@ -10,9 +10,7 @@
 {% block content %}
     <input type="checkbox" id="check">
     <!--header area start-->
-    <header>
-    {% include 'event/navbar.html' %}
-    </header>
+    {% include 'event/navbar/main.html' %}
     <!--header area end-->
     <!--mobile navigation bar start-->
     {% include 'event/mobile_nav_bar.html' %}
@@ -23,13 +21,12 @@
 
     <div class="content">
         {% if object_list %}
-            {% for post in object_list %}
-                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
-                  <div class="card" style="border-radius: 10px;" >
-                    <p style="color: #091121; font-size: 20px; font-weight: 650">{{ post.title }}<br>
-                        created by
-                      <span style="color: #fb084c; font-size: 25px;">{{ post.user.username }}</span>
-                        <span style="color: #161b28; font-size: small">({{ post.post_date }})</span>
+            {% for topic in object_list %}
+                <a href="{% url 'topic' topic.pk %}" class="text-decoration-none">
+                  <div class="card">
+                    <p style="color: #091121; font-size: 24px; font-weight: 650">
+                        <span style="color: #fb084c; font-size: 22px">[ {{ topic.category }} ]</span>
+                        - {{ topic.topic_name }}
                     </p>
                   </div>
                 </a>
