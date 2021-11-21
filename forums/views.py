@@ -1,21 +1,24 @@
+from django.utils import timezone
+
 from django.contrib import messages
 from django.db import IntegrityError
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 
 from .forms import PostForm, PostTopicForm
 from .models import Post, Topic
 
 
-def detail(request, pk):
-    return render(request, 'forums/detail.html')
-
-  
 class MainView(ListView):
     model = Topic
     template_name = 'forums/main.html'
+
+    def get_queryset(self):
+        """Return: the last five published questions."""
+        return Post.objects.filter(
+            post_date__lte=timezone.now()
+        ).order_by('-post_date')
 
 
 class DetailForumView(DetailView):
@@ -69,6 +72,60 @@ def create_forum(request):
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
+    
+    
+@login_required(login_url='/accounts/login')
+def likes_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    is_disliked = False
+
+    for dislike in post.dislikes.all():
+        if dislike == request.user:
+            is_disliked = True
+
+    if is_disliked:
+        post.dislikes.remove(request.user)
+
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return redirect('detail', pk)
+
+
+@login_required(login_url='/accounts/login')
+def dislikes_post(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
+
+    is_dislike = False
+
+    for dislike in post.dislikes.all():
+        if dislike == request.user:
+            is_dislike = True
+            break
+
+    if is_dislike:
+        post.dislikes.remove(request.user)
+    else:
+        post.dislikes.add(request.user)
+    return redirect('detail', pk)
 
 
 def search_topic(request):
