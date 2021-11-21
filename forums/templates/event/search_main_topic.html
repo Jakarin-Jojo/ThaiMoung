@@ -19,9 +19,10 @@
     {% include 'event/sidebar.html' %}
     <!--sidebar end-->
 
+    <!--search result start-->
     <div class="content">
-        {% if object_list %}
-            {% for topic in object_list %}
+        {% if searched and topic %}
+            {% for topic in topic %}
                 <a href="{% url 'topic' topic.pk %}" class="text-decoration-none">
                   <div class="card" >
                     <p style="color: #091121; font-size: 24px; font-weight: 650">
@@ -32,8 +33,10 @@
                 </a>
             {% endfor %}
         {% else %}
-            <div style="text-align: center;"><h1 style="color: #FFFFFF">No forums</h1></div>
+            <div style="text-align: center;"><h1 style="color: #FFFFFF">No topic yet........</h1></div>
         {% endif %}
     </div>
+    <!--search result end-->
+
     <script src="{% static 'forums/main.js' %}"></script>
 {% endblock %}
