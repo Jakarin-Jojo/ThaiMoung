@@ -8,6 +8,7 @@ from django.utils.text import slugify
 CATEGORY = [
     ('', '----------'),
     ('news', 'News'),
+    ('harassment', 'Harassment'),
     ('sports', 'Sports'),
     ('games', 'Games'),
     ('fashion', 'Fashion'),
