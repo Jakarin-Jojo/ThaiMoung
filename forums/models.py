@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -44,6 +45,8 @@ class Post(models.Model):
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
 
     def __str__(self):
         """Return a string representation of the title of forum."""

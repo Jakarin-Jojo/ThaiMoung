@@ -1,22 +1,24 @@
 {% load static %}
     <div class="sidebar">
       <div class="profile_info">
-        <img src="{% static 'forums/user-icon.png' %}" class="profile_image" alt="">
-          {% if user.is_authenticated %}
-            <h4>{{ user.username }}</h4>
+         {% if user.profile.image_profile %}
+            <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="100" height="100" alt="{{ user.user.username }}">
           {% else %}
-              <h4>Guest</h4>
-          {% endif %}
+            <img class="profile_image" src="{% static 'users/default.png' %}" alt="default-profile">
+        {% endif %}
+      {% if user.is_authenticated %}
+        <h4 style="color: #FB0A52">{{ user.username }}</h4>
+      {% else %}
+        <h4 style="color: #FB0A52">Guest</h4>
+      {% endif %}
           <div class="container">
             <div class="row" style=" color: gainsboro;">
-                {% if not user.is_authenticated %}
-                    <div class="col" ><a href="{% url 'sign_in_and_sign_up' %}"><i class="fas fa-user-plus" style="font-size: 20px"></i></a></div>
-                    <div class="col" style="font-size: 20px"><a href="{% url 'sign_in_and_sign_up' %}"><i class="fas fa-cog"></i></a></div>
-                {% endif %}
                 {% if user.is_authenticated %}
                     <div class="col" style="font-size: 20px"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a></div>
-                    <div class="col" style="font-size: 20px"><a href="#"><i class="fas fa-cog"></i></a></div>
+                {% else %}
+                    <div class="col" ><a href="{% url 'register_user' %}"><i class="fas fa-user-plus" style="font-size: 20px"></i></a></div>
                 {% endif %}
+                    <div class="col" style="font-size: 20px"><a href="{% url 'profile' user %}"><i class="fas fa-cog"></i></a></div>
             </div>
           </div>
       </div>
@@ -27,5 +29,5 @@
       <a class="nav text-decoration-none" href="{% url 'category' 'technology' %}"><i class="fas fa-microchip"></i><span>Technology</span></a>
       <a class="nav text-decoration-none" href="{% url 'category' 'music' %}"><i class="fas fa-music"></i><span>Music</span></a>
       <a class="nav text-decoration-none" href="{% url 'category' 'gourmet' %}"><i class="fas fa-utensils"></i><span>Gourmet</span></a>
-      <a class="nav text-decoration-none" href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+      <a class="nav text-decoration-none" href="{% url 'profile' user %}"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
 </div>

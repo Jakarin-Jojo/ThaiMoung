@@ -1,21 +1,24 @@
+from django.utils import timezone
+
 from django.contrib import messages
 from django.db import IntegrityError
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 
 from .forms import PostForm, PostTopicForm
 from .models import Post, Topic
 
 
-def detail(request, pk):
-    return render(request, 'forums/detail.html')
-
-  
 class MainView(ListView):
     model = Topic
     template_name = 'forums/main.html'
+
+    def get_queryset(self):
+        """Return: the last five published questions."""
+        return Post.objects.filter(
+            post_date__lte=timezone.now()
+        ).order_by('-post_date')
 
 
 class DetailForumView(DetailView):
@@ -86,33 +89,58 @@ def filter_category(request, cate):  # cate = News, Sport, ...
     category_topic = Topic.objects.filter(category=cate)
     return render(request,
                   'event/categories.html',
-                  {'cate': cate, 'category_topic': category_topic})
+                  {'cate': cate, 'category_post': category_posts})
 
 
-def filter_topic(request, topic):
-    topic_post = Post.objects.filter(topic=topic)
-    return render(request,
-                  'event/posted_forum.html',
-                  {'topic': topic, 'topic_post': topic_post})
+@login_required(login_url='/accounts/login')
+def likes_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    is_disliked = False
 
+    for dislike in post.dislikes.all():
+        if dislike == request.user:
+            is_disliked = True
 
-def search_post_topic(request, topic):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        if searched == '':
-            return redirect('main')
-        post = Post.objects.filter(topic=topic).filter(title__contains=searched)
-        return render(request, 'event/search_post.html', {'searched': searched, 'post': post})
+    if is_disliked:
+        post.dislikes.remove(request.user)
+
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
     else:
-        return render(request, 'event/search_post.html', {})
+        post.likes.add(request.user)
+    return redirect('detail', pk)
 
 
-def search_post_category(request, cate):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        if searched == '':
-            return redirect('main')
-        topic = Topic.objects.filter(category=cate)
-        return render(request, 'event/search_post.html', {'searched': searched, 'post': topic})
+@login_required(login_url='/accounts/login')
+def dislikes_post(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    is_liked = False
+
+    for like in post.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        post.likes.remove(request.user)
+
+    is_dislike = False
+
+    for dislike in post.dislikes.all():
+        if dislike == request.user:
+            is_dislike = True
+            break
+
+    if is_dislike:
+        post.dislikes.remove(request.user)
     else:
-        return render(request, 'event/search_post.html', {})
+        post.dislikes.add(request.user)
+    return redirect('detail', pk)
