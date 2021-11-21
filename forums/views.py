@@ -140,14 +140,18 @@ def search_topic(request):
 
 
 def filter_category(request, cate):  # cate = News, Sport, ...
-    category_topic = Topic.objects.filter(category=cate)
+    category_topic = Topic.objects.filter(category=cate).filter(
+            topic_date__lte=timezone.now()
+        ).order_by('-topic_date')
     return render(request,
                   'event/categories.html',
                   {'cate': cate, 'category_topic': category_topic})
 
 
 def filter_topic(request, topic):
-    topic_post = Post.objects.filter(topic=topic)
+    topic_post = Post.objects.filter(topic=topic).filter(
+            post_date__lte=timezone.now()
+        ).order_by('-post_date')
     return render(request,
                   'event/posted_forum.html',
                   {'topic': topic, 'topic_post': topic_post})
