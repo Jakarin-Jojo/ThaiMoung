@@ -16,9 +16,9 @@ class MainView(ListView):
 
     def get_queryset(self):
         """Return: the last five published questions."""
-        return Post.objects.filter(
-            post_date__lte=timezone.now()
-        ).order_by('-post_date')
+        return Topic.objects.filter(
+            topic_date__lte=timezone.now()
+        ).order_by('-topic_date')
 
 
 class DetailForumView(DetailView):
