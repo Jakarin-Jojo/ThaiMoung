@@ -23,7 +23,7 @@
         {% if object_list %}
             {% for topic in object_list %}
                 <a href="{% url 'topic' topic.pk %}" class="text-decoration-none">
-                  <div class="card" >
+                  <div class="card">
                     <p style="color: #091121; font-size: 24px; font-weight: 650">
                         <span style="color: #fb084c; font-size: 22px">[ {{ topic.category }} ]</span>
                         - {{ topic.topic_name }}

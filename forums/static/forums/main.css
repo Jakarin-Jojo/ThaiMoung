@@ -138,6 +138,7 @@ label #sidebar_btn:hover{
 .content .card {
   padding: 0 20px;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 /* Responsive CSS */
