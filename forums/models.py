@@ -40,7 +40,6 @@ class Post(models.Model):
     description = models.TextField(max_length=500)  # description of the forum
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)  # topic of the forum
     post_date = models.DateTimeField(default=timezone.now)  # created date of the forum
-    slug = models.SlugField(unique=True, allow_unicode=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True,
                              blank=True,
@@ -49,11 +48,6 @@ class Post(models.Model):
     def __str__(self):
         """Return a string representation of the title of forum."""
         return self.title
-
-    def save(self, *args, **kwargs):
-        """Save the slug of the forum object."""
-        self.slug = self.slug or slugify(self.title, allow_unicode=True)
-        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('main')

@@ -112,7 +112,7 @@ def search_post_category(request, cate):
         searched = request.POST['searched']
         if searched == '':
             return redirect('main')
-        topic = Topic.objects.filter(category=cate)
-        return render(request, 'event/search_post.html', {'searched': searched, 'topic': topic})
+        topic = Topic.objects.filter(category=cate).filter(topic_name__contains=searched)
+        return render(request, 'event/search_topic.html', {'searched': searched, 'topic': topic, 'cate': cate})
     else:
-        return render(request, 'event/search_post.html', {})
+        return render(request, 'event/search_topic.html', {})
