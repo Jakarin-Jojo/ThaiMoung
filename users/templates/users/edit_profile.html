@@ -1,0 +1,33 @@
+{% extends "forums/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <div class="content-section text-center">
+      <div class="media">
+        {% if user.profile.image_profile %}
+        <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width=200" height="200" alt="{{ user.username }}image">
+         {% else %}
+             <img class="rounded-circle account-img" src="{% static 'users/default.png' %}" width=200" height="200" alt="default-profile">
+          {% endif %}
+        <div class="media-body">
+          <h2 class="text-info">{{ user.username }}</h2>
+          <p class="text-info">{{ user.email }}</p>
+        </div>
+      </div>
+        <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group" style="color: #FFFFFF">
+                  <legend class="border-bottom mb-4" style="color: #FFFFFF">Profile Info</legend>
+                  {{ u_form|crispy }}
+                  {{ p_form|crispy }}
+              </fieldset>
+              <div class="form-group">
+                  <button class="btn btn-outline-info" type="submit">Update</button>
+              </div>
+          </form>
+    </div>
+
+<a role="button" class="btn btn-primary me-3" href="{% url 'main' %}">Back</a>
+{% endblock content %}
