@@ -6,7 +6,7 @@ ThaiMoung is a web forum application that provides services to create forums for
 ## Project Documents
 
 [Home](../../wiki/Home)  
-[Proposal](https://docs.google.com/document/d/1rzrv2o_gZU1Uh3EQ-Ona6EIYkrj8onRlVrpoh9FInAI/edit#)
+[Proposal](https://docs.google.com/document/d/1rzrv2o_gZU1Uh3EQ-Ona6EIYkrj8onRlVrpoh9FInAI/edit#)  
 [Installation](../../wiki/Installation)  
 [Vision Statement](../../wiki/Vision%20Statement)  
 [Requirements](../../wiki/Requirements)   
