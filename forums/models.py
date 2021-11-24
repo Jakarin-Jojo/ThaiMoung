@@ -15,6 +15,7 @@ CATEGORY = [
     ('fashion', 'Fashion'),
     ('technology', 'Technology'),
     ('music', 'Music'),
+    ('movie', 'Movie'),
     ('gourmet', 'Gourmet'),
 ]
 
