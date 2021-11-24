@@ -60,7 +60,7 @@ class Post(models.Model):
 class Comment(models.Model):
     """A class that collects values name, description, category, created_at, slug, the user."""
 
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     description = models.TextField(max_length=500)
     post_date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -70,7 +70,7 @@ class Comment(models.Model):
 
     def __str__(self):
         """Return a string representation of the comment in forum."""
-        return str(self.post)
+        return f"{str(self.post)} - {self.user}"
 
     def get_absolute_url(self):
         return reverse('main')
