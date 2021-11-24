@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 
-from .forms import PostForm, PostTopicForm
-from .models import Post, Topic
+from .forms import *
+from .models import *
 
 
 class MainView(ListView):
@@ -72,6 +72,22 @@ def create_forum(request):
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login')
+def create_comment(request):
+    """Create a new comment.
+    Returns:
+    HttpResponseObject -- new event comment
+    """
+    if request.method == 'POST':
+        comment_form = PostCommentForm(request.POST, request.FILES)
+        if comment_form.is_valid():
+            comment_form.save()
+            return redirect('main')
+    else:
+        comment_form = PostCommentForm()
+    return render(request, 'forums/detail.html', {'comment_form': comment_form})
     
     
 @login_required(login_url='/accounts/login')
