@@ -70,7 +70,7 @@ class Comment(models.Model):
 
     def __str__(self):
         """Return a string representation of the comment in forum."""
-        return f"{str(self.post)} - {self.user}"
+        return f"{str(self.post)} - {self.description[:20]}"
 
     def get_absolute_url(self):
         return reverse('main')
