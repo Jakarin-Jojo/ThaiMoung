@@ -74,20 +74,35 @@ def create_forum(request):
     return render(request, 'forums/create_forum.html', {'form': form})
 
 
-@login_required(login_url='/accounts/login')
-def create_comment(request):
-    """Create a new comment.
-    Returns:
-    HttpResponseObject -- new event comment
-    """
-    if request.method == 'POST':
-        comment_form = PostCommentForm(request.POST, request.FILES)
-        if comment_form.is_valid():
-            comment_form.save()
-            return redirect('main')
-    else:
-        comment_form = PostCommentForm()
-    return render(request, 'forums/detail.html', {'comment_form': comment_form})
+# @login_required(login_url='/accounts/login')
+# class CreateComment(CreateView):
+#     model = Comment
+#     form_class = PostCommentForm
+#     template_name = 'forums/create_comment.html'
+#     # primary_key = 0
+#
+#     def form_valid(self, form):
+#         form.instance.post_id = self.kwargs['pk']
+#         self.primary_key = form.instance.post_id
+#         super().form_valid(form)
+#
+#     success_url = redirect('detail')  # ('detail', primary_key)
+
+
+# @login_required(login_url='/accounts/login')
+# def create_comment(request, pk):
+#     """Create a new comment.
+#     Returns:
+#     HttpResponseObject -- new event comment
+#     """
+#     if request.method == 'POST':
+#         comment_form = PostCommentForm(request.POST, request.FILES)
+#         if comment_form.is_valid():
+#             comment_form.save()
+#             return redirect('detail', pk)
+#     else:
+#         comment_form = PostCommentForm()
+#     return render(request, 'forums/create_comment.html', {'comment_form': comment_form})
     
     
 @login_required(login_url='/accounts/login')

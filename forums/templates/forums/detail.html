@@ -18,7 +18,7 @@
                                         {% endif %}
                                     <div class="d-flex flex-column justify-content-start ml-2">
                                         <a href="{% url 'profile' post.user.username %}" class="text-decoration-none" ><span class="d-block font-weight-bold name" style="margin-left: 5px">{{ post.user }}</span></a>
-                                        <span class="date text-white" style="margin-left: 5px">1 hour ago</span>
+                                        <span class="date text-white" style="margin-left: 5px">{{ post.post_date }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                {% if not post.comments.all %}
+                {% if not post.comments %}
                     <div style="text-align: center;"><h1 style="color: #FFFFFF">No comment yet</h1></div>
                 {% else %}
                     {% for comment in post.comments.all %}
@@ -63,7 +63,7 @@
                                     <span class="d-block p-2 bg-dark text-white border-bottom border-4">
                                         <a href="#" class="text-decoration-none">
                                         <div class="d-flex flex-row user-info">
-                                            <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" width="50" alt="">
+                                            <img class="rounded-circle" src={{ comment.user.profile.image_profile.url }} width="50" alt="">
                                             <div class="d-flex flex-column justify-content-start ml-2">
                                                 <span class="d-block font-weight-bold name" style="margin-left: 5px">{{ comment.user }}</span>
                                                 <span class="date text-white" style="margin-left: 5px">{{ comment.post_date }}</span>
@@ -84,26 +84,7 @@
                         </div>
                     {% endfor %}
                 {% endif %}
-                <form method="post">
-                    <div class="card mb-2" style="background-color: #2e323e">
-                        <div class="card-body">
-                            <div class="media forum-item">
-                                <div class="d-flex flex-row align-items-start">
-                                    {% if user.profile.image_profile %}
-                                        <a href="{% url 'profile' user.username %}"><img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="50" height="50" alt="{{ user.username }}"></a>
-                                    {% else %}
-                                        <a href="{% url 'profile' user %}"><img class="rounded-circle account-img" src="{% static 'users/default.png' %}" width="50" height="50" alt="default-profile"></a>
-                                    {% endif %}
-                                        <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px"></textarea>
-                                </div>
-                                <div class="mt-2" style="text-align: end">
-                                    <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
-                                    <a class="btn btn-outline-primary btn-sm ml-1 shadow-none" href="{% url 'main' %}" type="button">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                {% include 'forums/create_comment.html' %}
             <!-- /Forum Detail -->
 
             <!-- /Inner main body -->
