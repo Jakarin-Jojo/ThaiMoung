@@ -85,27 +85,39 @@ class CreateComment(CreateView):
         return super().form_valid(form)
 
 
+class CreateReply(CreateView):
+    model = Reply
+    form_class = PostReplyForm
+    template_name = 'forums/create_reply.html'
+
+    def form_valid(self, form):
+        form.instance.comment = Comment.objects.get(pk=self.kwargs.get("pk"))
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
 # @login_required(login_url='/accounts/login')
 # def create_comment(request, pk):
 #     """Create a new comment.
 #     Returns:
 #     HttpResponseObject -- new event comment
 #     """
-#     post = Post.objects.get(pk=pk)
 #     if request.method == 'POST':
-#         comment_form = PostCommentForm(request.POST)
-#         comment_form.post = post
-#         obj = Comment()
-#         obj.post = post
-#         obj.description = comment_form.cleaned_data['description']
-#         obj.user = comment_form.cleaned_data['user']
-#         obj.description = comment_form.cleaned_data['post_date']
-#         obj.save()
-#         comment_form.save()
-#         return redirect('detail', pk=pk)
+#         post = Post.objects.get(pk=pk)
+#         comment_form = PostCommentForm(request.POST, request.FILES)
+#         if comment_form.is_valid():
+#             comment_form.post = post
+#             comment_form.user = request.user
+#             try:
+#                 event = comment_form.save()
+#             except IntegrityError:
+#                 return redirect('main')
+#             event.user = request.user
+#             event.save()
+#             return redirect('detail', pk=pk)
 #     else:
 #         comment_form = PostCommentForm()
-#     return render(request, 'forums/create_comment.html', {'comment_form': comment_form})
+#     return render(request, 'forums/detail.html', {'comment_form': comment_form})
     
     
 @login_required(login_url='/accounts/login')

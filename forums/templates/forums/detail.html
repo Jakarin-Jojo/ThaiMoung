@@ -76,7 +76,7 @@
                                             <div class="mt-3 font-size-sm">
                                                 <p>{{ comment.description }}</p>
                                             </div>
-                                            <a href="javascript:void(0)">Reply</a>
+                                            <a href="{% url 'create_reply' comment.pk %}">Reply</a>
                                         </div>
                                     </span>
                                 </div>

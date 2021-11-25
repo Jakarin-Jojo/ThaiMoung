@@ -11,6 +11,7 @@ urlpatterns = [
     path('create_topic/', views.create_topic, name='create_topic'),
     path('create_forum/', views.create_forum, name='create_forum'),
     path('detail/<int:pk>/create_comment', login_required(views.CreateComment.as_view()), name='create_comment'),
+    path('detail/<int:pk>/create_reply', login_required(views.CreateReply.as_view()), name='create_reply'),
     path('search/', views.search_topic, name='search'),
     path('category_<str:cate>/', views.filter_category, name='category'),
     path('category_<str:cate>/search', views.search_post_category, name='search_category'),

@@ -22,3 +22,9 @@ class PostCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['description']
+
+
+class PostReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['description']
