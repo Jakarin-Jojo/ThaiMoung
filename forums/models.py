@@ -55,3 +55,39 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('main')
+
+
+class Comment(models.Model):
+    """A class that collects values name, description, category, created_at, slug, the user."""
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    description = models.TextField(max_length=500)
+    post_date = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True,
+                             blank=True,
+                             on_delete=models.CASCADE)
+
+    def __str__(self):
+        """Return a string representation of the comment in forum."""
+        return f"{str(self.post)} - {self.description[:20]}"
+
+    def get_absolute_url(self):
+        return reverse('main')
+
+
+class Reply(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies")
+    description = models.TextField(max_length=500)
+    post_date = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True,
+                             blank=True,
+                             on_delete=models.CASCADE)
+
+    def __str__(self):
+        """Return a string representation of the reply in comment."""
+        return f"{str(self.comment)} - {self.description[:20]}"
+
+    def get_absolute_url(self):
+        return reverse('main')

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Topic
+from .models import *
 
 
 # topics = Topic.objects.all().values_list('topic_name', 'topic_name')
@@ -16,3 +16,15 @@ class PostTopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['topic_name', 'category']
+
+
+class PostCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['description']
+
+
+class PostReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['description']

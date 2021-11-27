@@ -4,10 +4,10 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
-from .forms import PostForm, PostTopicForm
-from .models import Post, Topic
+from .forms import *
+from .models import *
 
 
 class MainView(ListView):
@@ -72,6 +72,52 @@ def create_forum(request):
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
+
+
+class CreateComment(CreateView):
+    model = Comment
+    form_class = PostCommentForm
+    template_name = 'forums/create_comment.html'
+
+    def form_valid(self, form):
+        form.instance.post = Post.objects.get(pk=self.kwargs.get("pk"))
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class CreateReply(CreateView):
+    model = Reply
+    form_class = PostReplyForm
+    template_name = 'forums/create_reply.html'
+
+    def form_valid(self, form):
+        form.instance.comment = Comment.objects.get(pk=self.kwargs.get("pk"))
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+# @login_required(login_url='/accounts/login')
+# def create_comment(request, pk):
+#     """Create a new comment.
+#     Returns:
+#     HttpResponseObject -- new event comment
+#     """
+#     if request.method == 'POST':
+#         post = Post.objects.get(pk=pk)
+#         comment_form = PostCommentForm(request.POST, request.FILES)
+#         if comment_form.is_valid():
+#             comment_form.post = post
+#             comment_form.user = request.user
+#             try:
+#                 event = comment_form.save()
+#             except IntegrityError:
+#                 return redirect('main')
+#             event.user = request.user
+#             event.save()
+#             return redirect('detail', pk=pk)
+#     else:
+#         comment_form = PostCommentForm()
+#     return render(request, 'forums/detail.html', {'comment_form': comment_form})
     
     
 @login_required(login_url='/accounts/login')

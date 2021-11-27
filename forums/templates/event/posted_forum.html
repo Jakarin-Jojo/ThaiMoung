@@ -22,11 +22,12 @@
     <div class="content">
         {% if topic_post %}
             {% for post in topic_post %}
-                <a href="{% url 'detail' post.pk %}" class="text-decoration-none">
+                <a class="text-decoration-none">
                   <div class="card" >
-                    <p style="color: #091121; font-size: 20px; font-weight: 650">{{ post.title }}<br>
+                    <p style="color: #091121; font-size: 20px; font-weight: 650" >
+                        <a href="{% url 'detail' post.pk %}" style="color: #091121; font-size: 25px; font-weight: 650; text-decoration: none">{{ post.title }}</a><br>
                         created by
-                      <span style="color: #fb084c">{{ post.user.username }}</span>
+                        <a href="{% url 'profile' post.user.username %}" style="text-decoration: none"><span style="color: #fb084c">{{ post.user.username }}</span></a>
                         <span style="color: #161b28; font-size: small">({{ post.post_date }})</span>
                     </p>
                   </div>

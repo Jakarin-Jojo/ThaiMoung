@@ -62,6 +62,11 @@ body{
   transition-property: background;
 }
 
+a:hover {
+  background: #ffdde8;
+  border-radius: 5px;
+}
+
 .sidebar a:hover{
   background: #FB084C;
 }
