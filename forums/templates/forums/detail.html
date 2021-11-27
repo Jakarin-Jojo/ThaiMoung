@@ -116,16 +116,9 @@
                 <div class="card mb-2" style="background-color: #2e323e">
                     <div class="card-body">
                         <div class="media forum-item">
-                            <div class="d-flex flex-row align-items-start">
-                                {% if user.profile.image_profile %}
-                                    <a href="{% url 'profile' user.username %}"><img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" width="50" height="50" alt="{{ user.username }}"></a>
-                                {% else %}
-                                    <a href="{% url 'profile' user %}"><img class="rounded-circle account-img" src="{% static 'users/default.png' %}" width="50" height="50" alt="default-profile"></a>
-                                {% endif %}
-                                <textarea class="form-control ml-1 shadow-none textarea" style="margin-left: 5px">{{ form.as_p }}</textarea>
-                            </div>
                             <div class="mt-2" style="text-align: end">
                                 <a class="btn btn-primary btn-sm shadow-non" href="{% url 'create_comment' post.pk %}">Add comment HERE</a>
+                                <a role="button" class="btn btn-outline-danger btn-sm shadow-non" href="{% url 'main' %}">go to Main</a>
                             </div>
                         </div>
                     </div>
