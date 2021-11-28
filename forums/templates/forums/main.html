@@ -20,6 +20,12 @@
     <!--sidebar end-->
 
     <div class="content">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} " role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endfor %}
         {% if object_list %}
             {% for topic in object_list %}
                 <a href="{% url 'topic' topic.pk %}" class="text-decoration-none">
