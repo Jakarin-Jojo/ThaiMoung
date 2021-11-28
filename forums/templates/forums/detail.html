@@ -79,6 +79,22 @@
                                             <a href="{% url 'create_reply' comment.pk %}">Reply</a>
                                         </div>
                                     </span>
+                                    <div class="text-center">
+                                <span style="color:lawngreen " class="d-none d-sm-inline-block" ><form method="POST" action="{% url 'likes_comment' pk=post.pk comment_pk=comment.pk %}">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-thumbs-up" style="font-size: 25px; color: whitesmoke;"></i>
+                                    </button>
+                                    {{ comment.likes.all.count }}
+                                </form></span>
+                                <span style="color:#fb084c" class="d-none d-sm-inline-block"><form method="POST" action="{% url 'dislikes_comment' pk=post.pk comment_pk=comment.pk %}">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit" style="margin-top: 10px">
+                                        <i class="fas fa-thumbs-down" style="font-size: 25px; color: whitesmoke;"></i>
+                                    </button>
+                                    {{ comment.dislikes.all.count }}
+                                </form></span>
+                            </div>
                                 </div>
                             </div>
                         </div>
