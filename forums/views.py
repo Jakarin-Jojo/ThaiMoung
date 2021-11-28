@@ -118,8 +118,8 @@ class CreateReply(CreateView):
 #     else:
 #         comment_form = PostCommentForm()
 #     return render(request, 'forums/detail.html', {'comment_form': comment_form})
-    
-    
+
+
 @login_required(login_url='/accounts/login')
 def likes_post(request, pk):
     post = Post.objects.get(pk=pk)
@@ -174,6 +174,61 @@ def dislikes_post(request, pk):
     return redirect('detail', pk)
 
 
+@login_required(login_url='/accounts/login')
+def likes_comment(request, pk, comment_pk):
+
+    comment = Comment.objects.get(pk=comment_pk)
+
+    is_disliked = False
+
+    for dislike in comment.dislikes.all():
+        if dislike == request.user:
+            is_disliked = True
+
+    if is_disliked:
+        comment.dislikes.remove(request.user)
+
+    is_liked = False
+
+    for like in comment.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        comment.likes.remove(request.user)
+    else:
+        comment.likes.add(request.user)
+    return redirect('detail', pk)
+
+
+@login_required(login_url='/accounts/login')
+def dislikes_comment(request, pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    is_liked = False
+
+    for like in comment.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        comment.likes.remove(request.user)
+
+    is_dislike = False
+
+    for dislike in comment.dislikes.all():
+        if dislike == request.user:
+            is_dislike = True
+            break
+
+    if is_dislike:
+        comment.dislikes.remove(request.user)
+    else:
+        comment.dislikes.add(request.user)
+    return redirect('detail', pk)
+
+
 def search_topic(request):
     if request.method == "POST":
         searched = request.POST['searched']
@@ -187,8 +242,8 @@ def search_topic(request):
 
 def filter_category(request, cate):  # cate = News, Sport, ...
     category_topic = Topic.objects.filter(category=cate).filter(
-            topic_date__lte=timezone.now()
-        ).order_by('-topic_date')
+        topic_date__lte=timezone.now()
+    ).order_by('-topic_date')
     return render(request,
                   'event/categories.html',
                   {'cate': cate, 'category_topic': category_topic})
@@ -196,8 +251,8 @@ def filter_category(request, cate):  # cate = News, Sport, ...
 
 def filter_topic(request, topic):
     topic_post = Post.objects.filter(topic=topic).filter(
-            post_date__lte=timezone.now()
-        ).order_by('-post_date')
+        post_date__lte=timezone.now()
+    ).order_by('-post_date')
     return render(request,
                   'event/posted_forum.html',
                   {'topic': topic, 'topic_post': topic_post})
