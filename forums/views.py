@@ -176,7 +176,6 @@ def dislikes_post(request, pk):
 
 @login_required(login_url='/accounts/login')
 def likes_comment(request, pk, comment_pk):
-
     comment = Comment.objects.get(pk=comment_pk)
 
     is_disliked = False
@@ -226,6 +225,59 @@ def dislikes_comment(request, pk, comment_pk):
         comment.dislikes.remove(request.user)
     else:
         comment.dislikes.add(request.user)
+    return redirect('detail', pk)
+
+
+@login_required(login_url='/accounts/login')
+def likes_reply(request, pk, comment_pk, reply_pk):
+    reply = Reply.objects.get(pk=reply_pk)
+    is_disliked = False
+
+    for dislike in reply.dislikes.all():
+        if dislike == request.user:
+            is_disliked = True
+
+    if is_disliked:
+        reply.dislikes.remove(request.user)
+
+    is_liked = False
+
+    for like in reply.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        reply.likes.remove(request.user)
+    else:
+        reply.likes.add(request.user)
+    return redirect('detail', pk)
+
+
+@login_required(login_url='/accounts/login')
+def dislikes_reply(request, pk, comment_pk, reply_pk):
+    reply = Reply.objects.get(pk=reply_pk)
+    is_liked = False
+
+    for like in reply.likes.all():
+        if like == request.user:
+            is_liked = True
+            break
+
+    if is_liked:
+        reply.likes.remove(request.user)
+
+    is_dislike = False
+
+    for dislike in reply.dislikes.all():
+        if dislike == request.user:
+            is_dislike = True
+            break
+
+    if is_dislike:
+        reply.dislikes.remove(request.user)
+    else:
+        reply.dislikes.add(request.user)
     return redirect('detail', pk)
 
 
