@@ -3,7 +3,7 @@ from django.test import TestCase
 from forums.models import *
 
 
-class TopicModel(TestCase):
+class TopicModelTest(TestCase):
     """Tests of the topic model."""
 
     def setUp(self) -> None:
@@ -40,7 +40,7 @@ class TopicModel(TestCase):
         self.assertEqual(topic.get_absolute_url(), '/forums/')
 
 
-class PostModel(TestCase):
+class PostModelTest(TestCase):
     """Tests of the post model."""
 
     def setUp(self) -> None:
@@ -85,7 +85,7 @@ class PostModel(TestCase):
         self.assertEqual(post.get_absolute_url(), '/forums/')
 
 
-class CommentModel(TestCase):
+class CommentModelTest(TestCase):
     """Tests of the comment model."""
 
     def setUp(self) -> None:
@@ -122,7 +122,7 @@ class CommentModel(TestCase):
         self.assertEqual(comment.get_absolute_url(), '/forums/')
 
 
-class ReplyModel(TestCase):
+class ReplyModelTest(TestCase):
     """Tests of the reply model."""
 
     def setUp(self) -> None:
