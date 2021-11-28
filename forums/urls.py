@@ -17,4 +17,8 @@ urlpatterns = [
     path('category_<str:cate>/search', views.search_post_category, name='search_category'),
     path('topic_<str:topic>', views.filter_topic, name='topic'),
     path('topic_<str:topic>/search', views.search_post_topic, name='search_topic'),
+    path('detail/<int:pk>/<int:comment_pk>/likes_comment', views.likes_comment, name='likes_comment'),
+    path('detail/<int:pk>/<int:comment_pk>/dislikes_comment', views.dislikes_comment, name='dislikes_comment'),
+    path('detail/<int:pk>/<int:comment_pk>/<int:reply_pk>/likes_reply', views.likes_reply, name='likes_reply'),
+    path('detail/<int:pk>/<int:comment_pk>/<int:reply_pk>/dislikes_reply', views.dislikes_reply, name='dislikes_reply'),
 ]

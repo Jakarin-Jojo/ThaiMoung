@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from django.utils.text import slugify
 
 
 CATEGORY = [
@@ -67,6 +66,8 @@ class Comment(models.Model):
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes_comment')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes_comment')
 
     def __str__(self):
         """Return a string representation of the comment in forum."""
@@ -84,6 +85,8 @@ class Reply(models.Model):
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes_reply')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes_reply')
 
     def __str__(self):
         """Return a string representation of the reply in comment."""
