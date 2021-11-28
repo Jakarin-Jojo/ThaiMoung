@@ -85,6 +85,8 @@ class Reply(models.Model):
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes_reply')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes_reply')
 
     def __str__(self):
         """Return a string representation of the reply in comment."""
