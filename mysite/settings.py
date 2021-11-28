@@ -182,4 +182,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', defau
 CLOUDINARY_URL = env('CLOUDINARY_URL', default='cloudinary')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), test_runner=False)
