@@ -106,11 +106,6 @@ class CommentModelTest(TestCase):
         expected_object_name = f'{comment.post.title} - {comment.description[:20]}'
         self.assertEqual(str(comment), expected_object_name)
 
-    def test_get_absolute_url(self):
-        comment = Comment.objects.get(id=1)
-        # This will also fail if the urlconf is not defined.
-        self.assertEqual(comment.get_absolute_url(), '/forums/')
-
 
 class ReplyModelTest(TestCase):
     """Tests of the reply model."""
@@ -144,8 +139,3 @@ class ReplyModelTest(TestCase):
         reply = Reply.objects.get(id=1)
         expected_object_name = f"{str(reply.comment)} - {reply.description[:20]}"
         self.assertEqual(str(reply), expected_object_name)
-
-    def test_get_absolute_url(self):
-        reply = Reply.objects.get(id=1)
-        # This will also fail if the urlconf is not defined.
-        self.assertEqual(reply.get_absolute_url(), '/forums/')
