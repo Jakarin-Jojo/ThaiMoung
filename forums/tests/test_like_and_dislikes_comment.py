@@ -1,5 +1,6 @@
 from django.test import TestCase
 from forums.models import *
+from django.urls import reverse
 
 
 class LikesCommentSystem(TestCase):
