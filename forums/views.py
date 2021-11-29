@@ -1,4 +1,4 @@
-from django.utils import timezone
+from django.urls import reverse_lazy
 
 from django.contrib import messages
 from django.db import IntegrityError
@@ -68,7 +68,7 @@ def create_forum(request):
             event.user = request.user
             event.save()
             messages.success(request, f'{forum_title} has been created.')
-            return redirect('main')
+            return redirect('topic', event.topic.pk)
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
@@ -84,6 +84,9 @@ class CreateComment(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('detail', kwargs={'pk': self.kwargs.get("pk")})
+
 
 class CreateReply(CreateView):
     model = Reply
@@ -91,9 +94,12 @@ class CreateReply(CreateView):
     template_name = 'forums/create_reply.html'
 
     def form_valid(self, form):
-        form.instance.comment = Comment.objects.get(pk=self.kwargs.get("pk"))
+        form.instance.comment = Comment.objects.get(pk=self.kwargs.get("pk_comment"))
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('detail', kwargs={'pk': self.kwargs.get("pk")})
 
 
 # @login_required(login_url='/accounts/login')
