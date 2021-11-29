@@ -20,7 +20,7 @@ CATEGORY = [
 class Topic(models.Model):
     """A class that collect the list of post."""
 
-    topic_name = models.CharField(max_length=20)
+    topic_name = models.CharField(max_length=50)
     category = models.CharField(max_length=20, choices=CATEGORY, default='')  # category of the topic
     topic_date = models.DateTimeField(default=timezone.now)
 
