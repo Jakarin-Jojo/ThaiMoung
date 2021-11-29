@@ -3,8 +3,8 @@ from django.test import TestCase
 from forums.forms import *
 
 
-class CreateTopicTest(TestCase):
-    """Tests for create topic."""
+class CreateTopicFormTest(TestCase):
+    """Tests for create topic form."""
 
     def test_create_topic_full_fill(self):
         form_data = {'topic_name': 'Batman', 'category': 'movie'}
@@ -22,8 +22,8 @@ class CreateTopicTest(TestCase):
         self.assertFalse(form.is_valid())
 
 
-class CreatePostTest(TestCase):
-    """Tests for create post."""
+class CreatePostFormTest(TestCase):
+    """Tests for create post form."""
 
     def setUp(self) -> None:
         Topic.objects.create(topic_name='Batman', category='movie')
@@ -56,8 +56,8 @@ class CreatePostTest(TestCase):
         self.assertFalse(form.is_valid())
 
 
-class CreateCommentTest(TestCase):
-    """Tests for create comment."""
+class CreateCommentFormTest(TestCase):
+    """Tests for create comment form."""
 
     def setUp(self) -> None:
         Topic.objects.create(topic_name='Batman', category='movie')
@@ -75,8 +75,8 @@ class CreateCommentTest(TestCase):
         self.assertFalse(form.is_valid())
 
 
-class CreateReplyTest(TestCase):
-    """Tests for reply topic."""
+class CreateReplyFormTest(TestCase):
+    """Tests for reply topic form."""
 
     def setUp(self) -> None:
         Topic.objects.create(topic_name='Batman', category='movie')
