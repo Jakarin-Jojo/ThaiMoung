@@ -27,7 +27,7 @@ class TopicModelTest(TestCase):
     def test_topic_name_max_length(self):
         topic = Topic.objects.get(id=1)
         field_label = topic._meta.get_field('topic_name').max_length
-        self.assertEqual(field_label, 20)
+        self.assertEqual(field_label, 50)
 
     def test_object_name_is_topic_name(self):
         topic = Topic.objects.get(id=1)
