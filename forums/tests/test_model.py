@@ -34,11 +34,6 @@ class TopicModelTest(TestCase):
         expected_object_name = topic.topic_name
         self.assertEqual(str(topic), expected_object_name)
 
-    def test_get_absolute_url(self):
-        topic = Topic.objects.get(id=1)
-        # This will also fail if the urlconf is not defined.
-        self.assertEqual(topic.get_absolute_url(), '/forums/')
-
 
 class PostModelTest(TestCase):
     """Tests of the post model."""
@@ -78,11 +73,6 @@ class PostModelTest(TestCase):
         post = Post.objects.get(id=1)
         expected_object_name = post.title
         self.assertEqual(str(post), expected_object_name)
-
-    def test_get_absolute_url(self):
-        post = Post.objects.get(id=1)
-        # This will also fail if the urlconf is not defined.
-        self.assertEqual(post.get_absolute_url(), '/forums/')
 
 
 class CommentModelTest(TestCase):
