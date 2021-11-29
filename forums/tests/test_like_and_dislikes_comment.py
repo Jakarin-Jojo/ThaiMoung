@@ -16,6 +16,7 @@ class LikesCommentSystem(TestCase):
 
     def test_submit_likes_comment_without_login(self):
         """Test submit likes comment without login ,The web must redirect to register_user"""
+        self.client.logout()
         response = self.client.post(reverse('likes_comment', args=[self.post.pk, self.comment.pk]), follow=True)
         self.assertEqual(self.comment.likes.count(), 0)
         self.assertRedirects(response, '/accounts/register_user')
