@@ -20,6 +20,12 @@
     <!--sidebar end-->
 
     <div class="content">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} " role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
         {% if topic_post %}
             {% for post in topic_post %}
                 <a class="text-decoration-none">

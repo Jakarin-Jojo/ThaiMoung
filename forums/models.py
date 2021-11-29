@@ -4,7 +4,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-
 CATEGORY = [
     ('', '----------'),
     ('news', 'News'),
@@ -30,9 +29,6 @@ class Topic(models.Model):
         """Return a string representation of the topic."""
         return self.topic_name
 
-    def get_absolute_url(self):
-        return reverse('main')
-
 
 class Post(models.Model):
     """Post a class that collects values name, description, category, created_at, slug, the user."""
@@ -51,9 +47,6 @@ class Post(models.Model):
     def __str__(self):
         """Return a string representation of the title of forum."""
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('main')
 
 
 class Comment(models.Model):

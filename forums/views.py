@@ -68,7 +68,7 @@ def create_forum(request):
             event.user = request.user
             event.save()
             messages.success(request, f'{forum_title} has been created.')
-            return redirect('main')
+            return filter_topic(request, event.topic)
     else:
         form = PostForm()
     return render(request, 'forums/create_forum.html', {'form': form})
