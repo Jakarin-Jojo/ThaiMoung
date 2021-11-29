@@ -7,6 +7,7 @@ class LikesCommentSystem(TestCase):
     """Test for likes and dislikes reply comments"""
 
     def setUp(self) -> None:
+        """setup testcase by create user, topic ,post, comment and reply."""
         self.users = User.objects.create_user(username='tester', password='secret123456')
         self.topic = Topic.objects.create(topic_name='Hello', category='New')
         self.post = Post.objects.create(title='test', description='tester', topic=self.topic, user=self.users)
