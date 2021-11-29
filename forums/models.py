@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls import reverse
 from django.utils import timezone
 
 CATEGORY = [
@@ -66,9 +65,6 @@ class Comment(models.Model):
         """Return a string representation of the comment in forum."""
         return f"{str(self.post)} - {self.description[:20]}"
 
-    def get_absolute_url(self):
-        return reverse('main')
-
 
 class Reply(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies")
@@ -84,6 +80,3 @@ class Reply(models.Model):
     def __str__(self):
         """Return a string representation of the reply in comment."""
         return f"{str(self.comment)} - {self.description[:20]}"
-
-    def get_absolute_url(self):
-        return reverse('main')
