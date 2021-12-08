@@ -26,9 +26,6 @@ jobs:
       shell: bash
       env:
           CONFIG_SECRET: ${{secrets.CONFIG_SECRET}}
-    - name: Collectstaticfile
-      run: |
-        python manage.py collectstatic
     - name: Run Tests
       run: |
         coverage run manage.py test

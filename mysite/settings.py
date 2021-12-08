@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY', default='dumb-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.thaimoung.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'thaimoung.herokuapp.com']
 
 # Application definition
 
